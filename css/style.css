@@ -1,0 +1,36 @@
+/* Custom Utility Classes & Sizes */
+.badge-tag {
+  @apply inline-block px-4 py-1.5 text-sm font-semibold tracking-wider text-cyan-400 bg-cyan-950/80 border border-cyan-800/60 rounded-full uppercase;
+}
+
+/* Card Styling Lebih Besar */
+.card-active {
+  @apply group block p-6 bg-slate-800/80 border-2 border-cyan-500/50 rounded-2xl hover:border-cyan-400 hover:bg-slate-800 transition duration-200 shadow-xl shadow-cyan-950/30;
+}
+
+.card-locked {
+  @apply p-6 bg-slate-900/50 border border-slate-800 border-dashed rounded-2xl opacity-60;
+}
+
+.card-exam-uts {
+  @apply p-6 bg-amber-950/30 border-2 border-amber-800/60 rounded-2xl opacity-90;
+}
+
+.card-exam-uas {
+  @apply p-6 bg-emerald-950/30 border-2 border-emerald-800/60 rounded-2xl opacity-90;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
