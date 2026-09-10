@@ -1,6 +1,10 @@
 /* ==========================================================================
    CSS Variables & Theme Setup (Dark & Light Mode)
    ========================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   /* Dark Mode Default */
   --bg-body: #0b0f19;
@@ -50,6 +54,13 @@ body {
   color: var(--text-main);
   line-height: 1.5;
   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
 }
 
 /* ==========================================================================

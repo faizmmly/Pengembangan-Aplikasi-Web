@@ -1,66 +1,136 @@
-/**
- * Main Application Logic
- * Portal Praktikum LMS Dashboard
- */
+/* ==========================================================================
+   Main JavaScript - Tracking Tugas LMS
+   ========================================================================== */
 
-// Toggle Dark / Light Theme Function
-function toggleTheme() {
-  const body = document.body;
-  const themeIcon = document.getElementById('themeIcon');
-  const themeText = document.getElementById('themeText');
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initModalEvents();
+  initSmoothScroll();
+});
 
-  body.classList.toggle('light-mode');
-
-  if (body.classList.contains('light-mode')) {
-    themeIcon.textContent = '☀️';
-    themeText.textContent = 'Light Mode';
-    localStorage.setItem('theme', 'light');
+/* ==========================================================================
+   1. Theme Management (Dark & Light Mode)
+   ========================================================================== */
+function initTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+    updateThemeUI(true);
   } else {
-    themeIcon.textContent = '🌙';
-    themeText.textContent = 'Dark Mode';
-    localStorage.setItem('theme', 'dark');
+    document.body.classList.remove('light-mode');
+    updateThemeUI(false);
   }
 }
 
-// Open PDF Modal Viewer
-function openPdfModal(title, pdfUrl) {
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('pdfViewer').src = pdfUrl;
-  
-  const modal = document.getElementById('pdfModal');
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden'; // Lock background scrolling
+function toggleTheme() {
+  const isLightMode = document.body.classList.toggle('light-mode');
+  localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+  updateThemeUI(isLightMode);
 }
 
-// Close PDF Modal Viewer
-function closePdfModal() {
-  const modal = document.getElementById('pdfModal');
-  modal.style.display = 'none';
-  document.getElementById('pdfViewer').src = '';
-  document.body.style.overflow = 'auto'; // Restore background scrolling
-}
+function updateThemeUI(isLight) {
+  const themeIcon = document.getElementById('themeIcon');
+  const themeText = document.getElementById('themeText');
 
-// Search / Filter Functionality for Modules
-function filterWeeks() {
-  const input = document.getElementById('searchInput').value.toLowerCase();
-  const cards = document.getElementsByClassName('week-item');
-
-  for (let i = 0; i < cards.length; i++) {
-    const cardText = cards[i].innerText.toLowerCase();
-    if (cardText.includes(input)) {
-      cards[i].style.display = "flex";
+  if (themeIcon && themeText) {
+    if (isLight) {
+      themeIcon.textContent = '☀️';
+      themeText.textContent = 'Light Mode';
     } else {
-      cards[i].style.display = "none";
+      themeIcon.textContent = '🌙';
+      themeText.textContent = 'Dark Mode';
     }
   }
 }
 
-// Load Saved Theme State on Page Load
-window.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-mode');
-    document.getElementById('themeIcon').textContent = '☀️';
-    document.getElementById('themeText').textContent = 'Light Mode';
+/* ==========================================================================
+   2. PDF Modal Viewer
+   ========================================================================== */
+function openPdfModal(title, pdfUrl) {
+  const modal = document.getElementById('pdfModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const pdfViewer = document.getElementById('pdfViewer');
+
+  if (modal && modalTitle && pdfViewer) {
+    modalTitle.textContent = title;
+    pdfViewer.src = pdfUrl;
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Kunci scroll halaman belakang
   }
-});
+}
+
+function closePdfModal() {
+  const modal = document.getElementById('pdfModal');
+  const pdfViewer = document.getElementById('pdfViewer');
+
+  if (modal && pdfViewer) {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    pdfViewer.src = '';
+    document.body.style.overflow = ''; // Kembalikan scroll halaman
+  }
+}
+
+function initModalEvents() {
+  const modal = document.getElementById('pdfModal');
+
+  if (modal) {
+    // Tutup modal jika mengklik area luar modal (overlay)
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closePdfModal();
+      }
+    });
+
+    // Tutup modal dengan menekan tombol 'Escape'
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closePdfModal();
+      }
+    });
+  }
+}
+
+/* ==========================================================================
+   3. Search & Filter Cards
+   ========================================================================== */
+function filterWeeks() {
+  const input = document.getElementById('searchInput');
+  const filter = input.value.toLowerCase().trim();
+  const weekCards = document.querySelectorAll('.weeks-grid .card');
+
+  weekCards.forEach((card) => {
+    const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+    const desc = card.querySelector('.card-desc')?.textContent.toLowerCase() || '';
+    const tags = Array.from(card.querySelectorAll('.tech-tags span'))
+      .map(span => span.textContent.toLowerCase())
+      .join(' ');
+
+    if (title.includes(filter) || desc.includes(filter) || tags.includes(filter)) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+/* ==========================================================================
+   4. Sidebar Nav Active State
+   ========================================================================== */
+function initSmoothScroll() {
+  const menuItems = document.querySelectorAll('.sidebar-menu .menu-item');
+
+  menuItems.forEach((item) => {
+    item.addEventListener('click', function () {
+      const href = this.getAttribute('href');
+      
+      // Mengubah status aktif hanya pada tautan internal (#)
+      if (href && href.startsWith('#')) {
+        menuItems.forEach((nav) => nav.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+}
