@@ -77,18 +77,18 @@
         <div class="stats-grid">
           <div class="stat-card">
             <span class="stat-title">Progress Modul</span>
-            <span class="stat-value">7 / 16</span>
+            <span class="stat-value">0 / 16</span>
             <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 43.75%;"></div>
+              <div class="progress-bar-fill" style="width: 0%;"></div>
             </div>
           </div>
           <div class="stat-card">
             <span class="stat-title">Status UTS</span>
-            <span class="stat-value text-amber">Terjadwal (W8)</span>
+            <span class="stat-value text-amber" id="status-uts">Terjadwal (W8)</span>
           </div>
           <div class="stat-card">
             <span class="stat-title">Status UAS</span>
-            <span class="stat-value text-purple">Terjadwal (W16)</span>
+            <span class="stat-value text-purple" id="status-uas">Terjadwal (W16)</span>
           </div>
         </div>
       </section>
@@ -109,276 +109,160 @@
         <!-- Grid Kartu Pertemuan LMS Style -->
         <div class="weeks-grid" id="weeksGrid">
 
-          <!-- Week 01 -->
+          <!-- Week 01 (Aktif) -->
           <div class="card week-item">
             <div class="card-top">
               <span class="week-tag">Week 01</span>
               <span class="status-pill completed">Selesai</span>
             </div>
             <h3 class="card-title">Setup Environment & Dasar HTML5</h3>
-            <p class="card-desc">Laporan praktikum struktur Web, HTTP</p>
+            <p class="card-desc">Laporan praktikum struktur Web, HTTP Request Investigation</p>
             <div class="tech-tags">
               <span>HTML5</span>
               <span>Git</span>
               <span>PDF</span>
             </div>
             <div class="card-actions">
-              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 01 - Setup Environment', 'tugas-week-01.pdf')">
+              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 01 - Web Request Investigation', 'week-01/Tugas 1 Pengembangan Aplikasi Web - 1247050032 - Faiz Muhammad Ilham - IF A 24.pdf')">
                 <span>📄</span> Lihat PDF
               </button>
-              <a href="tugas-week-01.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
+              <a href="week-01/Tugas 1 Pengembangan Aplikasi Web - 1247050032 - Faiz Muhammad Ilham - IF A 24.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
             </div>
           </div>
 
           <!-- Week 02 -->
-          <div class="card week-item">
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 02</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Styling dengan CSS3 & Layout</h3>
-            <p class="card-desc">Penerapan Flexbox, CSS Grid, variabel CSS, dan tata letak responsif.</p>
-            <div class="tech-tags">
-              <span>CSS3</span>
-              <span>Flexbox</span>
-              <span>PDF</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 02 - CSS3 & Layout', 'tugas-week-02.pdf')">
-                <span>📄</span> Lihat PDF
-              </button>
-              <a href="tugas-week-02.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 03 -->
-          <div class="card week-item">
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 03</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">CSS Frameworks & Tailwind CSS</h3>
-            <p class="card-desc">Eksplorasi utilitas CSS, kustomisasi komponen, dan Tailwind CLI/CDN.</p>
-            <div class="tech-tags">
-              <span>Tailwind</span>
-              <span>CSS</span>
-              <span>PDF</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 03 - Tailwind CSS', 'tugas-week-03.pdf')">
-                <span>📄</span> Lihat PDF
-              </button>
-              <a href="tugas-week-03.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 04 -->
-          <div class="card week-item">
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 04</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Dasar JavaScript & DOM</h3>
-            <p class="card-desc">Variabel, tipe data, fungsi, event handler, dan manipulasi elemen HTML.</p>
-            <div class="tech-tags">
-              <span>JavaScript</span>
-              <span>DOM</span>
-              <span>PDF</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 04 - JS & DOM', 'tugas-week-04.pdf')">
-                <span>📄</span> Lihat PDF
-              </button>
-              <a href="tugas-week-04.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 05 -->
-          <div class="card week-item">
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 05</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Asynchronous JS & Fetch API</h3>
-            <p class="card-desc">Promise, Async/Await, pengambilan data dari REST API publik, dan render JSON.</p>
-            <div class="tech-tags">
-              <span>Fetch API</span>
-              <span>JSON</span>
-              <span>PDF</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 05 - Fetch API', 'tugas-week-05.pdf')">
-                <span>📄</span> Lihat PDF
-              </button>
-              <a href="tugas-week-05.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 06 -->
-          <div class="card week-item">
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 06</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Form Handling & Validasi Input</h3>
-            <p class="card-desc">Validasi formulir di sisi klien, Regex, dan penanganan status error UI.</p>
-            <div class="tech-tags">
-              <span>JavaScript</span>
-              <span>Forms</span>
-              <span>PDF</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 06 - Form Validation', 'tugas-week-06.pdf')">
-                <span>📄</span> Lihat PDF
-              </button>
-              <a href="tugas-week-06.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 07 -->
-          <div class="card week-item">
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 07</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Web Storage & Local Persistence</h3>
-            <p class="card-desc">Penerapan LocalStorage dan SessionStorage untuk manajemen status lokal.</p>
-            <div class="tech-tags">
-              <span>LocalStorage</span>
-              <span>PDF</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 07 - Web Storage', 'tugas-week-07.pdf')">
-                <span>📄</span> Lihat PDF
-              </button>
-              <a href="tugas-week-07.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 08 (UTS) -->
-          <div class="card week-item card-exam-uts">
+          <div class="card week-item card-exam-uts placeholder-card">
             <div class="card-top">
               <span class="week-tag tag-uts">Week 08</span>
               <span class="status-pill exam-uts">UTS 🎖️</span>
             </div>
             <h3 class="card-title">Ujian Tengah Semester</h3>
-            <p class="card-desc">Dokumentasi dan Laporan Pembuatan Portal Web Interaktif serta Custom Domain.</p>
-            <div class="tech-tags">
-              <span>Project UTS</span>
-              <span>PDF</span>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-primary" onclick="openPdfModal('Laporan UTS - Week 08', 'uts-laporan.pdf')">
-                <span>📄</span> Lihat PDF
-              </button>
-              <a href="uts-laporan.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
-            </div>
           </div>
 
-          <!-- Week 09 s/d 15 -->
-          <div class="card week-item">
+          <!-- Week 09 -->
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 09</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Pengenalan Framework React</h3>
-            <p class="card-desc">Dasar React, komponen, JSX, props, dan arsitektur aplikasi modular.</p>
-            <div class="tech-tags"><span>React</span></div>
-            <div class="card-actions">
-              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
-          <div class="card week-item">
+          <!-- Week 10 -->
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 10</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">State Management & Hooks</h3>
-            <p class="card-desc">Penggunaan useState, useEffect, dan alur data antar komponen React.</p>
-            <div class="tech-tags"><span>React Hooks</span></div>
-            <div class="card-actions">
-              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
-          <div class="card week-item">
+          <!-- Week 11 -->
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 11</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Routing & Single Page Application</h3>
-            <p class="card-desc">Implementasi React Router untuk navigasi multi-halaman pada client-side.</p>
-            <div class="tech-tags"><span>React Router</span></div>
-            <div class="card-actions">
-              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
-          <div class="card week-item">
+          <!-- Week 12 -->
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 12</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Integrasi Backend & REST API</h3>
-            <p class="card-desc">Menghubungkan aplikasi front-end dengan layanan backend dan database.</p>
-            <div class="tech-tags"><span>Node.js</span><span>Express</span></div>
-            <div class="card-actions">
-              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
-          <div class="card week-item">
+          <!-- Week 13 -->
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 13</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Autentikasi & Otorisasi Web</h3>
-            <p class="card-desc">Manajemen sesi pengguna, JWT (JSON Web Token), dan proteksi route.</p>
-            <div class="tech-tags"><span>JWT</span><span>Auth</span></div>
-            <div class="card-actions">
-              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
-          <div class="card week-item">
+          <!-- Week 14 -->
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 14</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Pengujian & Optimasi Performa</h3>
-            <p class="card-desc">Testing komponen, Lighthouse audit, dan teknik optimasi beban kerja web.</p>
-            <div class="tech-tags"><span>Testing</span><span>Lighthouse</span></div>
-            <div class="card-actions">
-              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
-          <div class="card week-item">
+          <!-- Week 15 -->
+          <div class="card week-item placeholder-card">
             <div class="card-top">
               <span class="week-tag">Week 15</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Deployment & CI/CD Pipeline</h3>
-            <p class="card-desc">Publikasi aplikasi web ke platform cloud dan otomasi deployment via Git.</p>
-            <div class="tech-tags"><span>Vercel</span><span>CI/CD</span></div>
-            <div class="card-actions">
-              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
-            </div>
+            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 16 (UAS) -->
-          <div class="card week-item card-exam-uas">
+          <div class="card week-item card-exam-uas placeholder-card">
             <div class="card-top">
               <span class="week-tag tag-uas">Week 16</span>
               <span class="status-pill exam-uas">UAS 🏆</span>
             </div>
             <h3 class="card-title">Ujian Akhir Semester</h3>
-            <p class="card-desc">Pengumpulan Portfolio Aplikasi Web Fullstack & Presentasi Akhir.</p>
-            <div class="tech-tags"><span>Fullstack</span></div>
-            <div class="card-actions">
-              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
-            </div>
           </div>
 
         </div>

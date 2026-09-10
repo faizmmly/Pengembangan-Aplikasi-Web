@@ -134,3 +134,55 @@ function initSmoothScroll() {
     });
   });
 }
+
+function updateModuleProgress() {
+  const totalModules = 16;
+  // Hitung berapa modul yang sudah bertanda "completed" / "Selesai"
+  const completedModules = document.querySelectorAll('.status-pill.completed').length;
+  
+  // Hitung persentase
+  const percentage = (completedModules / totalModules) * 100;
+
+  // Elemen target
+  const statValue = document.querySelector('.stat-value');
+  const progressBarFill = document.querySelector('.progress-bar-fill');
+
+  // Update teks & lebar progress bar
+  if (statValue) {
+    statValue.innerText = `${completedModules} / ${totalModules}`;
+  }
+  if (progressBarFill) {
+    progressBarFill.style.width = `${percentage}%`;
+  }
+}
+
+// Jalankan otomatis begitu dokumen HTML selesai dimuat
+document.addEventListener('DOMContentLoaded', updateModuleProgress);
+
+function updateExamStatus() {
+  // Cek apakah modul Week 08 / UTS sudah ditandai completed
+  // (Pastikan card week 08 kamu punya atribut data-week="8" atau sejenisnya)
+  const week8Card = document.querySelector('.card.week-item:nth-child(8) .status-pill.completed');
+  const week16Card = document.querySelector('.card.week-item:nth-child(16) .status-pill.completed');
+
+  const utsElement = document.getElementById('status-uts');
+  const uasElement = document.getElementById('status-uas');
+
+  // Update Status UTS
+  if (week8Card && utsElement) {
+    utsElement.innerText = 'Selesai';
+    utsElement.className = 'stat-value text-emerald'; // Ubah warna jadi hijau
+  }
+
+  // Update Status UAS
+  if (week16Card && uasElement) {
+    uasElement.innerText = 'Selesai';
+    uasElement.className = 'stat-value text-emerald';
+  }
+}
+
+// Panggil bersamaan saat DOM Load
+document.addEventListener('DOMContentLoaded', () => {
+  updateModuleProgress();
+  updateExamStatus();
+});
