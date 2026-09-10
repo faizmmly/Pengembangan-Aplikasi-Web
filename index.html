@@ -4,52 +4,151 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal Praktikum - Pengembangan Aplikasi Web</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+<body>
 
-  <!-- Header Section -->
-  <header class="border-b border-slate-800 bg-slate-950/70 py-16">
-    <div class="max-w-7xl mx-auto px-8 text-center">
-      <span class="badge-tag">Portal Praktikum</span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mt-5 tracking-tight">
-        Pengembangan Aplikasi Web
-      </h1>
-      <p class="text-slate-400 mt-3 text-lg sm:text-xl max-w-2xl mx-auto">
-        Kumpulan rekapitulasi tugas dan dokumentasi praktikum mingguan (Week 01 - 16).
-      </p>
-      <p>Faiz Muhammad Ilham Hariry</p>
+  <!-- Header / Hero Section -->
+  <header class="hero">
+    <div class="container hero-content">
+      <span class="badge">Mata Kuliah</span>
+      <h1>Pengembangan Aplikasi Web</h1>
+      
+      <!-- Profile Card Identitas Mahasiswa -->
+      <div class="profile-card">
+        <span class="profile-name">Faiz Muhammad Ilham</span>
+        <span class="profile-divider">•</span>
+        <span class="profile-info">NIM: 1247050032</span>
+        <span class="profile-divider">•</span>
+        <span class="profile-info">IF A 24</span>
+      </div>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-8 py-12 flex-1 w-full">
-    <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-800">
-      <h2 class="text-2xl font-bold text-white flex items-center gap-3">
-        <i data-lucide="folder-git-2" class="text-cyan-400 w-7 h-7"></i> Daftar Pertemuan
-      </h2>
-      <span class="text-sm font-medium text-slate-400 bg-slate-800 px-3 py-1 rounded-md border border-slate-700">Semester 5</span>
+  <main class="container">
+    <div class="section-header">
+      <div class="section-title">
+        <h2>Daftar Pertemuan</h2>
+        <p class="section-subtitle">Pilih minggu pertemuan untuk melihat dokumentasi praktikum</p>
+      </div>
+      <span class="semester-tag">Semester 5</span>
     </div>
 
-    <!-- Grid Container Lebih Lebar -->
-    <div id="weeks-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Card items dari JS -->
+    <!-- Grid Kartu Pertemuan Week 01 - 16 -->
+    <div class="weeks-grid">
+
+      <!-- Week 01 -->
+      <a href="./week-01/README.md" class="card active">
+        <span class="week-title">Week 01</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 02 -->
+      <a href="./week-02/README.md" class="card active">
+        <span class="week-title">Week 02</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 03 -->
+      <a href="./week-03/README.md" class="card active">
+        <span class="week-title">Week 03</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 04 -->
+      <a href="./week-04/README.md" class="card active">
+        <span class="week-title">Week 04</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 05 -->
+      <a href="./week-05/README.md" class="card active">
+        <span class="week-title">Week 05</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 06 -->
+      <a href="./week-06/README.md" class="card active">
+        <span class="week-title">Week 06</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 07 -->
+      <a href="./week-07/README.md" class="card active">
+        <span class="week-title">Week 07</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 08 (UTS) -->
+      <a href="./week-08/README.md" class="card uts">
+        <div class="week-info">
+          <span class="week-title">Week 08</span>
+          <span class="sub-label">UTS</span>
+        </div>
+        <span class="icon">🎖️</span>
+      </a>
+
+      <!-- Week 09 -->
+      <a href="./week-09/README.md" class="card active">
+        <span class="week-title">Week 09</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 10 -->
+      <a href="./week-10/README.md" class="card active">
+        <span class="week-title">Week 10</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 11 -->
+      <a href="./week-11/README.md" class="card active">
+        <span class="week-title">Week 11</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 12 -->
+      <a href="./week-12/README.md" class="card active">
+        <span class="week-title">Week 12</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 13 -->
+      <a href="./week-13/README.md" class="card active">
+        <span class="week-title">Week 13</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 14 -->
+      <a href="./week-14/README.md" class="card active">
+        <span class="week-title">Week 14</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 15 -->
+      <a href="./week-15/README.md" class="card active">
+        <span class="week-title">Week 15</span>
+        <span class="icon">↗</span>
+      </a>
+
+      <!-- Week 16 (UAS) -->
+      <a href="./week-16/README.md" class="card uas">
+        <div class="week-info">
+          <span class="week-title">Week 16</span>
+          <span class="sub-label">UAS</span>
+        </div>
+        <span class="icon">🏆</span>
+      </a>
+
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-800 bg-slate-950 py-8">
-    <div class="max-w-7xl mx-auto px-8 text-center text-sm text-slate-500">
-      <p>Pengembangan Aplikasi Web &copy; 2026</p>
+  <footer>
+    <div class="container">
+      <p>Pengembangan Aplikasi Web &copy; 2026 • Teknik Informatika</p>
     </div>
   </footer>
 
-  <!-- Custom JavaScript -->
-  <script src="js/main.js"></script>
 </body>
 </html>

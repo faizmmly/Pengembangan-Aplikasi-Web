@@ -1,36 +1,249 @@
-/* Custom Utility Classes & Sizes */
-.badge-tag {
-  @apply inline-block px-4 py-1.5 text-sm font-semibold tracking-wider text-cyan-400 bg-cyan-950/80 border border-cyan-800/60 rounded-full uppercase;
+/* ==========================================
+   1. RESET & BASE
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Card Styling Lebih Besar */
-.card-active {
-  @apply group block p-6 bg-slate-800/80 border-2 border-cyan-500/50 rounded-2xl hover:border-cyan-400 hover:bg-slate-800 transition duration-200 shadow-xl shadow-cyan-950/30;
+body {
+  background-color: #0b0f19; /* Modern Slate Dark */
+  color: #f1f5f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
 }
 
-.card-locked {
-  @apply p-6 bg-slate-900/50 border border-slate-800 border-dashed rounded-2xl opacity-60;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
 }
 
-.card-exam-uts {
-  @apply p-6 bg-amber-950/30 border-2 border-amber-800/60 rounded-2xl opacity-90;
+/* ==========================================
+   2. HERO HEADER & PROFILE BADGE
+   ========================================== */
+.hero {
+  padding: 3.5rem 0 2.5rem 0;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(30, 41, 59, 0.6) 0%, rgba(11, 15, 25, 0) 75%);
 }
 
-.card-exam-uas {
-  @apply p-6 bg-emerald-950/30 border-2 border-emerald-800/60 rounded-2xl opacity-90;
+.badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 9999px;
+  margin-bottom: 1rem;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+.hero h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
 }
-::-webkit-scrollbar-track {
-  background: #0f172a;
+
+/* Profile Identitas yang Rapi & Menyatu */
+.profile-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding: 0.5rem 1.25rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
+
+.profile-name {
+  font-weight: 600;
+  color: #38bdf8;
+  font-size: 0.95rem;
+}
+
+.profile-info {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+.profile-divider {
+  color: #475569;
+  font-size: 0.75rem;
+}
+
+/* ==========================================
+   3. SECTION HEADER
+   ========================================== */
+main {
+  flex: 1;
+  padding-bottom: 4rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section-title h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.section-subtitle {
+  font-size: 0.875rem;
+  color: #94a3b8; /* Lebih terang agar terbaca jelas */
+  margin-top: 0.25rem;
+}
+
+.semester-tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(30, 41, 59, 0.8);
+  color: #38bdf8;
+  padding: 0.35rem 0.85rem;
   border-radius: 6px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+
+/* ==========================================
+   4. GRID LAYOUT & CARDS
+   ========================================== */
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .weeks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .weeks-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Base Card Style */
+.card {
+  padding: 1.1rem 1.35rem;
+  border-radius: 10px;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.week-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.week-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sub-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.icon {
+  font-size: 1rem;
+  color: #38bdf8;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+/* Hover & Variants */
+.card.active:hover {
+  background: #1e293b;
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.4);
+}
+
+.card.active:hover .icon {
+  transform: translate(2px, -2px);
+}
+
+/* UTS Variant */
+.card.uts {
+  background: rgba(120, 53, 15, 0.18);
+  border-color: rgba(217, 119, 6, 0.35);
+}
+
+.card.uts .week-title {
+  color: #fef3c7;
+}
+
+.card.uts .sub-label {
+  background: rgba(217, 119, 6, 0.25);
+  color: #fbbf24;
+  border: 1px solid rgba(217, 119, 6, 0.4);
+}
+
+.card.uts:hover {
+  background: rgba(120, 53, 15, 0.35);
+  border-color: #fbbf24;
+  transform: translateY(-2px);
+}
+
+/* UAS Variant */
+.card.uas {
+  background: rgba(6, 78, 59, 0.18);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.card.uas .week-title {
+  color: #d1fae5;
+}
+
+.card.uas .sub-label {
+  background: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.card.uas:hover {
+  background: rgba(6, 78, 59, 0.35);
+  border-color: #34d399;
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   5. FOOTER
+   ========================================== */
+footer {
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748b;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
