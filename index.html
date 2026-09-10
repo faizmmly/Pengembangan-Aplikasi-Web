@@ -5,150 +5,325 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal Praktikum - Pengembangan Aplikasi Web</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Header / Hero Section -->
-  <header class="hero">
-    <div class="container hero-content">
-      <span class="badge">Mata Kuliah</span>
-      <h1>Pengembangan Aplikasi Web</h1>
-      
-      <!-- Profile Card Identitas Mahasiswa -->
-      <div class="profile-card">
-        <span class="profile-name">Faiz Muhammad Ilham</span>
-        <span class="profile-divider">•</span>
-        <span class="profile-info">NIM: 1247050032</span>
-        <span class="profile-divider">•</span>
-        <span class="profile-info">IF A 24</span>
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="brand-logo">
+        <span class="logo-icon">🎓</span>
+        <div class="logo-text">
+          <span class="brand-title">LMS Praktikum</span>
+          <span class="brand-subtitle">UIN Sunan Gunung Djati</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <!-- Dark/Light Theme Toggle Switch -->
+      <button id="themeToggle" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Mode Theme">
+        <span class="theme-icon" id="themeIcon">🌙</span>
+        <span class="theme-text" id="themeText">Dark Mode</span>
+      </button>
+
+      <!-- User Profile Badge -->
+      <div class="user-pill">
+        <div class="avatar">FM</div>
+        <div class="user-meta">
+          <span class="user-name">Faiz Muhammad Ilham</span>
+          <span class="user-sub">1247050032 • IF A 24</span>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="container">
-    <div class="section-header">
-      <div class="section-title">
-        <h2>Daftar Pertemuan</h2>
-        <p class="section-subtitle">Pilih minggu pertemuan untuk melihat dokumentasi praktikum</p>
+  <div class="lms-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav class="sidebar-menu">
+        <a href="#overview" class="menu-item active">
+          <span class="menu-icon">📊</span> Overview & Progress
+        </a>
+        <a href="#tasks" class="menu-item">
+          <span class="menu-icon">📚</span> Modul & Tugas (16 W)
+        </a>
+        <a href="https://github.com/faizmmly/Pengembangan-Aplikasi-Web" target="_blank" class="menu-item">
+          <span class="menu-icon">💻</span> Repositori GitHub
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="domain-card">
+          <span class="domain-label">Custom Domain</span>
+          <a href="https://faizmuhammadilham.my.id" target="_blank" class="domain-link">faizmuhammadilham.my.id ↗</a>
+        </div>
       </div>
-      <span class="semester-tag">Semester 5</span>
-    </div>
+    </aside>
 
-    <!-- Grid Kartu Pertemuan Week 01 - 16 -->
-    <div class="weeks-grid">
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Course Hero / Banner Banner -->
+      <section class="course-banner" id="overview">
+        <div class="banner-badge">IF-2026 • Semester 4</div>
+        <h1>Pengembangan Aplikasi Web</h1>
+        <p class="course-desc">Portofolio tugas & laporan mingguan praktikum pemrograman web dari Week 01 hingga Week 16.</p>
 
-      <!-- Week 01 -->
-      <a href="./week-01/README.md" class="card active">
-        <span class="week-title">Week 01</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 02 -->
-      <a href="./week-02/README.md" class="card active">
-        <span class="week-title">Week 02</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 03 -->
-      <a href="./week-03/README.md" class="card active">
-        <span class="week-title">Week 03</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 04 -->
-      <a href="./week-04/README.md" class="card active">
-        <span class="week-title">Week 04</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 05 -->
-      <a href="./week-05/README.md" class="card active">
-        <span class="week-title">Week 05</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 06 -->
-      <a href="./week-06/README.md" class="card active">
-        <span class="week-title">Week 06</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 07 -->
-      <a href="./week-07/README.md" class="card active">
-        <span class="week-title">Week 07</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 08 (UTS) -->
-      <a href="./week-08/README.md" class="card uts">
-        <div class="week-info">
-          <span class="week-title">Week 08</span>
-          <span class="sub-label">UTS</span>
+        <!-- Stats Overview Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-title">Progress Modul</span>
+            <span class="stat-value">7 / 16</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 43.75%;"></div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-title">Status UTS</span>
+            <span class="stat-value text-amber">Terjadwal (W8)</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-title">Status UAS</span>
+            <span class="stat-value text-purple">Terjadwal (W16)</span>
+          </div>
         </div>
-        <span class="icon">🎖️</span>
-      </a>
+      </section>
 
-      <!-- Week 09 -->
-      <a href="./week-09/README.md" class="card active">
-        <span class="week-title">Week 09</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 10 -->
-      <a href="./week-10/README.md" class="card active">
-        <span class="week-title">Week 10</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 11 -->
-      <a href="./week-11/README.md" class="card active">
-        <span class="week-title">Week 11</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 12 -->
-      <a href="./week-12/README.md" class="card active">
-        <span class="week-title">Week 12</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 13 -->
-      <a href="./week-13/README.md" class="card active">
-        <span class="week-title">Week 13</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 14 -->
-      <a href="./week-14/README.md" class="card active">
-        <span class="week-title">Week 14</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 15 -->
-      <a href="./week-15/README.md" class="card active">
-        <span class="week-title">Week 15</span>
-        <span class="icon">↗</span>
-      </a>
-
-      <!-- Week 16 (UAS) -->
-      <a href="./week-16/README.md" class="card uas">
-        <div class="week-info">
-          <span class="week-title">Week 16</span>
-          <span class="sub-label">UAS</span>
+      <!-- Section Header Controls -->
+      <section class="section-container" id="tasks">
+        <div class="section-header">
+          <div>
+            <h2>Daftar Pertemuan & Laporan</h2>
+            <p class="section-subtitle">Pilih modul untuk melihat atau mengunduh laporan PDF tugas praktikum</p>
+          </div>
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Cari topik atau modul..." onkeyup="filterWeeks()">
+          </div>
         </div>
-        <span class="icon">🏆</span>
-      </a>
 
+        <!-- Grid Kartu Pertemuan LMS Style -->
+        <div class="weeks-grid" id="weeksGrid">
+
+          <!-- Week 01 -->
+          <div class="card week-item">
+            <div class="card-top">
+              <span class="week-tag">Week 01</span>
+              <span class="status-pill completed">Selesai</span>
+            </div>
+            <h3 class="card-title">Setup Environment & Dasar HTML5</h3>
+            <p class="card-desc">Laporan praktikum struktur Web, HTTP, tag semantik HTML5, dan konfigurasi Git.</p>
+            <div class="tech-tags">
+              <span>HTML5</span>
+              <span>Git</span>
+              <span>PDF</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 01 - Setup Environment', 'tugas-week-01.pdf')">
+                <span>📄</span> Lihat PDF
+              </button>
+              <a href="tugas-week-01.pdf" download class="btn btn-secondary" title="Unduh File">📥</a>
+            </div>
+          </div>
+
+          <!-- Week 02 -->
+          <div class="card week-item">
+            <div class="card-top">
+              <span class="week-tag">Week 02</span>
+              <span class="status-pill completed">Selesai</span>
+            </div>
+            <h3 class="card-title">Styling dengan CSS3 & Layout</h3>
+            <p class="card-desc">Penerapan Flexbox, CSS Grid, variabel CSS, dan tata letak responsif.</p>
+            <div class="tech-tags">
+              <span>CSS3</span>
+              <span>Flexbox</span>
+              <span>PDF</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 02 - CSS3 & Layout', 'tugas-week-02.pdf')">
+                <span>📄</span> Lihat PDF
+              </button>
+              <a href="tugas-week-02.pdf" download class="btn btn-secondary">📥</a>
+            </div>
+          </div>
+
+          <!-- Week 03 -->
+          <div class="card week-item">
+            <div class="card-top">
+              <span class="week-tag">Week 03</span>
+              <span class="status-pill completed">Selesai</span>
+            </div>
+            <h3 class="card-title">CSS Frameworks & Tailwind CSS</h3>
+            <p class="card-desc">Eksplorasi utilitas CSS, kustomisasi komponen, dan Tailwind CLI/CDN.</p>
+            <div class="tech-tags">
+              <span>Tailwind</span>
+              <span>CSS</span>
+              <span>PDF</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 03 - Tailwind CSS', 'tugas-week-03.pdf')">
+                <span>📄</span> Lihat PDF
+              </button>
+              <a href="tugas-week-03.pdf" download class="btn btn-secondary">📥</a>
+            </div>
+          </div>
+
+          <!-- Week 04 -->
+          <div class="card week-item">
+            <div class="card-top">
+              <span class="week-tag">Week 04</span>
+              <span class="status-pill completed">Selesai</span>
+            </div>
+            <h3 class="card-title">Dasar JavaScript & DOM</h3>
+            <p class="card-desc">Variabel, tipe data, fungsi, event handler, dan manipulasi elemen HTML.</p>
+            <div class="tech-tags">
+              <span>JavaScript</span>
+              <span>DOM</span>
+              <span>PDF</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 04 - JS & DOM', 'tugas-week-04.pdf')">
+                <span>📄</span> Lihat PDF
+              </button>
+              <a href="tugas-week-04.pdf" download class="btn btn-secondary">📥</a>
+            </div>
+          </div>
+
+          <!-- Week 05 -->
+          <div class="card week-item">
+            <div class="card-top">
+              <span class="week-tag">Week 05</span>
+              <span class="status-pill completed">Selesai</span>
+            </div>
+            <h3 class="card-title">Asynchronous JS & Fetch API</h3>
+            <p class="card-desc">Promise, Async/Await, pengambilan data dari REST API publik, dan render JSON.</p>
+            <div class="tech-tags">
+              <span>Fetch API</span>
+              <span>JSON</span>
+              <span>PDF</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 05 - Fetch API', 'tugas-week-05.pdf')">
+                <span>📄</span> Lihat PDF
+              </button>
+              <a href="tugas-week-05.pdf" download class="btn btn-secondary">📥</a>
+            </div>
+          </div>
+
+          <!-- Week 06 -->
+          <div class="card week-item">
+            <div class="card-top">
+              <span class="week-tag">Week 06</span>
+              <span class="status-badge completed">Selesai</span>
+            </div>
+            <h3 class="card-title">Form Handling & Validasi Input</h3>
+            <p class="card-desc">Validasi formulir di sisi klien, Regex, dan penanganan status error UI.</p>
+            <div class="tech-tags">
+              <span>JavaScript</span>
+              <span>Forms</span>
+              <span>PDF</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 06 - Form Validation', 'tugas-week-06.pdf')">
+                <span>📄</span> Lihat PDF
+              </button>
+              <a href="tugas-week-06.pdf" download class="btn btn-secondary">📥</a>
+            </div>
+          </div>
+
+          <!-- Week 07 -->
+          <div class="card week-item">
+            <div class="card-top">
+              <span class="week-tag">Week 07</span>
+              <span class="status-pill completed">Selesai</span>
+            </div>
+            <h3 class="card-title">Web Storage & Local Persistence</h3>
+            <p class="card-desc">Penerapan LocalStorage dan SessionStorage untuk manajemen status lokal.</p>
+            <div class="tech-tags">
+              <span>LocalStorage</span>
+              <span>PDF</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openPdfModal('Tugas Week 07 - Web Storage', 'tugas-week-07.pdf')">
+                <span>📄</span> Lihat PDF
+              </button>
+              <a href="tugas-week-07.pdf" download class="btn btn-secondary">📥</a>
+            </div>
+          </div>
+
+          <!-- Week 08 (UTS) -->
+          <div class="card week-item card-exam-uts">
+            <div class="card-top">
+              <span class="week-tag tag-uts">Week 08</span>
+              <span class="status-pill exam-uts">UTS 🎖️</span>
+            </div>
+            <h3 class="card-title">Ujian Tengah Semester</h3>
+            <p class="card-desc">Dokumentasi dan Laporan Pembuatan Portal Web Interaktif serta Custom Domain.</p>
+            <div class="tech-tags">
+              <span>Project UTS</span>
+              <span>PDF</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openPdfModal('Laporan UTS - Week 08', 'uts-laporan.pdf')">
+                <span>📄</span> Lihat PDF
+              </button>
+              <a href="uts-laporan.pdf" download class="btn btn-secondary">📥</a>
+            </div>
+          </div>
+
+          <!-- Week 09 s/d 16 -->
+          <div class="card week-item">
+            <div class="card-top">
+              <span class="week-tag">Week 09</span>
+              <span class="status-pill pending">Mendatang</span>
+            </div>
+            <h3 class="card-title">Pengenalan Framework React</h3>
+            <p class="card-desc">Dasar React, komponen, JSX, props, dan arsitektur aplikasi modular.</p>
+            <div class="tech-tags"><span>React</span></div>
+            <div class="card-actions">
+              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
+            </div>
+          </div>
+
+          <div class="card week-item card-exam-uas">
+            <div class="card-top">
+              <span class="week-tag tag-uas">Week 16</span>
+              <span class="status-pill exam-uas">UAS 🏆</span>
+            </div>
+            <h3 class="card-title">Ujian Akhir Semester</h3>
+            <p class="card-desc">Pengumpulan Portfolio Aplikasi Web Fullstack & Presentasi Akhir.</p>
+            <div class="tech-tags"><span>Fullstack</span></div>
+            <div class="card-actions">
+              <button class="btn btn-disabled" disabled>Belum Tersedia</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- PDF Modal Viewer -->
+  <div id="pdfModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">📄</span>
+          <h3 id="modalTitle">Judul Dokumen PDF</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closePdfModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+      </div>
     </div>
-  </main>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>Pengembangan Aplikasi Web &copy; 2026 • Teknik Informatika</p>
-    </div>
-  </footer>
-
+  <!-- External JS File -->
+  <script src="js/main.js"></script>
 </body>
 </html>
