@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Metadata Dasar -->
+  <title>Profil Diri - Faiz Muhammad Ilham</title>
+  <meta name="description" content="Halaman profil diri dan biodata mahasiswa Teknik Informatika UIN Sunan Gunung Djati Bandung.">
+  <meta name="author" content="Faiz Muhammad Ilham">
+
+  <!-- Metadata Open Graph (OG Tags) -->
+  <meta property="og:title" content="Profil Diri - Faiz Muhammad Ilham">
+  <meta property="og:description" content="Halaman profil diri dan daftar mata kuliah semester ini.">
+  <meta property="og:image" content="https://faizmuhammadilham.my.id/week-02/Faiz%20AI.png">
+  <meta property="og:url" content="https://faizmuhammadilham.my.id/week-02/">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header Semantik -->
+    <header>
+      <h1>Faiz Muhammad Ilham</h1>
+      <p><span id="typing-text">Teknik Informatika • UIN Sunan Gunung Djati Bandung</span><span class="cursor">|</span></p>
+    </header>
+
+    <!-- Navigasi Semantik & Sticky -->
+    <nav>
+      <a href="#biodata">Biodata</a>
+      <a href="#matkul">Mata Kuliah</a>
+      <a href="#kontak">Tautan</a>
+
+      <!-- Masukkan button ini di dalam <nav> -->
+      <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">🌙 Mode</button>
+    </nav>
+
+    <!-- Main Content Semantik -->
+    <main>
+      
+      <!-- Section Biodata -->
+      <section id="biodata">
+        <h2>👤 Biodata</h2>
+        <div class="profile-card">
+          <div class="profile-img-wrapper" id="avatar-container">
+            <img src="Faiz AI.png" alt="Foto Profil Faiz Muhammad Ilham" class="profile-img">
+            <span class="status-badge" title="Aktif Kuliah"></span>
+          </div>
+          <div class="bio-details">
+            <ul>
+              <li><strong>Nama Lengkap :</strong> Faiz Muhammad Ilham</li>
+              <li><strong>NIM :</strong> 1247050032</li>
+              <li><strong>Jurusan :</strong> Teknik Informatika</li>
+              <li><strong>Angkatan :</strong> 2024</li>
+            </ul>
+            <p class="bio-desc">
+              Mahasiswa Teknik Informatika yang memiliki ketertarikan pada pengembangan web, pemodelan basis data, dan arsitektur perangkat lunak modern.
+            </p>
+
+            <div class="tech-stack">
+              <span class="tech-pill">React</span>
+              <span class="tech-pill">Next.js</span>
+              <span class="tech-pill">Java</span>
+              <span class="tech-pill">Tailwind CSS</span>
+              <span class="tech-pill">MySQL</span>
+            </div>
+            
+            <!-- Quick Stats Interactive Badges -->
+            <div class="stats-grid">
+              <div class="stat-badge">
+                <span class="stat-num" id="total-sks-badge">21</span>
+                <span class="stat-label">Total SKS</span>
+              </div>
+              <div class="stat-badge">
+                <span class="stat-num">5</span>
+                <span class="stat-label">Semester</span>
+              </div>
+              <div class="stat-badge">
+                <span class="stat-num">7</span>
+                <span class="stat-label">Mata Kuliah</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Tabel Mata Kuliah -->
+      <section id="matkul">
+        <div class="section-header">
+          <h2>📚 Daftar Mata Kuliah Semester 5</h2>
+          <input type="text" id="search-matkul" placeholder="🔍 Cari mata kuliah..." class="search-input">
+        </div>
+
+        <div class="table-responsive">
+          <table id="matkul-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Kode MK</th>
+                <th>Mata Kuliah</th>
+                <th>SKS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><span class="code-tag">20100470501030</span></td>
+                <td class="mk-name">Pengembangan Aplikasi Web</td>
+                <td class="sks-val">3</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><span class="code-tag">20100470501028</span></td>
+                <td class="mk-name">Pengembangan Aplikasi Mobile</td>
+                <td class="sks-val">3</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><span class="code-tag">20100470501024</span></td>
+                <td class="mk-name">Manajemen Basis Data</td>
+                <td class="sks-val">3</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><span class="code-tag">20100470501032</span></td>
+                <td class="mk-name">Interaksi Manusia dan Komputer</td>
+                <td class="sks-val">3</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><span class="code-tag">20100470501026</span></td>
+                <td class="mk-name">Jaringan Komputer</td>
+                <td class="sks-val">3</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><span class="code-tag">20100470501033</span></td>
+                <td class="mk-name">Intelegensia Buatan</td>
+                <td class="sks-val">3</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><span class="code-tag">20100470501034</span></td>
+                <td class="mk-name">Manajemen Proyek Perangkat Lunak</td>
+                <td class="sks-val">3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section Tautan / Link -->
+      <section id="kontak">
+        <h2>🔗 Tautan & Portofolio</h2>
+        <div class="link-buttons">
+          <a href="https://github.com/faizmmly" target="_blank" rel="noopener noreferrer" class="btn-link">
+            ⚡ Profil GitHub
+          </a>
+          <a href="https://faizmuhammadilham.my.id" target="_blank" rel="noopener noreferrer" class="btn-link">
+            🌐 Portal Portofolio Utama
+          </a>
+          <button class="btn-link btn-copy" onclick="copyProfileLink()">
+            📋 <span id="copy-btn-text">Bagikan Link Profil</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer Semantik -->
+    <footer>
+      <p>&copy; 2026 Faiz Muhammad Ilham. Dibuat untuk Tugas Praktikum HTML5.</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript Interaktif -->
+  <script>
+    // 1. Scroll-Spy Navigation
+    const navLinks = document.querySelectorAll('nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href').includes(current)) {
+          a.classList.add('active');
+        }
+      });
+    });
+
+    // 2. Filter Search Mata Kuliah Live
+    const searchInput = document.getElementById('search-matkul');
+    const tableRows = document.querySelectorAll('#matkul-table tbody tr');
+
+    searchInput.addEventListener('keyup', (e) => {
+      const term = e.target.value.toLowerCase();
+      tableRows.forEach(row => {
+        const mkName = row.querySelector('.mk-name').textContent.toLowerCase();
+        const mkCode = row.querySelector('.code-tag').textContent.toLowerCase();
+        if (mkName.includes(term) || mkCode.includes(term)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    // 3. Tombol Copy Profile Link
+    function copyProfileLink() {
+      navigator.clipboard.writeText(window.location.href);
+      const btnText = document.getElementById('copy-btn-text');
+      btnText.textContent = 'Link Tersalin! ✓';
+      setTimeout(() => {
+        btnText.textContent = 'Bagikan Link Profil';
+      }, 2000);
+    }
+
+    // Script Toggle Theme Dark/Light
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const btn = document.getElementById('theme-btn');
+      if (document.body.classList.contains('light-mode')) {
+        btn.textContent = '☀️ Mode';
+      } else {
+        btn.textContent = '🌙 Mode';
+      }
+    }
+
+    // Animation on Scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('reveal');
+      observer.observe(section);
+    });
+
+    // Highlight Baris Tabel Mata Kuliah saat diklik
+    document.querySelectorAll('#matkul-table tbody tr').forEach(row => {
+      row.addEventListener('click', () => {
+        row.classList.toggle('selected');
+      });
+    });
+  </script>
+
+</body>
+</html>
