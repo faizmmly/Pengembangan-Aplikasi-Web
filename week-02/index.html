@@ -12,117 +12,162 @@
   <!-- Metadata Open Graph (OG Tags) -->
   <meta property="og:title" content="Profil Diri - Faiz Muhammad Ilham">
   <meta property="og:description" content="Halaman profil diri dan daftar mata kuliah semester ini.">
-  <meta property="og:image" content="https://faizmuhammadilham.my.id/profil/foto-profil.jpg">
-  <meta property="og:url" content="https://faizmuhammadilham.my.id/profil/">
+  <!-- %20 digunakan untuk menggantikan spasi pada nama file -->
+  <meta property="og:image" content="https://faizmuhammadilham.my.id/week-02/Faiz%20AI.png">
+  <meta property="og:url" content="https://faizmuhammadilham.my.id/week-02/">
   <meta property="og:type" content="website">
 
-  <style>
-    /* Styling sederhana agar rapi */
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f4f6f8; }
-    header, nav, main, footer { max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; }
-    header { border-bottom: 2px solid #0066cc; margin-top: 20px; border-radius: 8px 8px 0 0; }
-    nav a { margin-right: 15px; color: #0066cc; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-top: 15px; border: 3px solid #0066cc; }
-    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-    table, th, td { border: 1px solid #ddd; }
-    th, td { padding: 10px; text-align: left; }
-    th { background-color: #0066cc; color: white; }
-    footer { text-align: center; border-top: 1px solid #ddd; font-size: 0.9em; color: #666; border-radius: 0 0 8px 8px; margin-bottom: 20px; }
-  </style>
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
-  <!-- Header Semantik -->
-  <header>
-    <h1>Profil Diri</h1>
-    <p>Selamat datang di halaman profil pribadi saya.</p>
-  </header>
+  <div class="container">
+    <!-- Header Semantik -->
+    <header>
+      <h1>Faiz Muhammad Ilham</h1>
+      <p>Teknik Informatika • UIN Sunan Gunung Djati Bandung</p>
+    </header>
 
-  <!-- Navigasi Semantik -->
-  <nav>
-    <a href="#biodata">Biodata</a>
-    <a href="#matkul">Mata Kuliah</a>
-    <a href="#kontak">Tautan</a>
-  </nav>
+    <!-- Navigasi Semantik & Sticky -->
+    <nav>
+      <a href="#biodata">Biodata</a>
+      <a href="#matkul">Mata Kuliah</a>
+      <a href="#kontak">Tautan</a>
+    </nav>
 
-  <!-- Main Content Semantik -->
-  <main>
-    
-    <!-- Section Biodata -->
-    <section id="biodata">
-      <h2>Biodata Singkat</h2>
-      <img src="Faiz AI.png" alt="Foto Profil Faiz Muhammad Ilham" class="profile-img">
+    <!-- Main Content Semantik -->
+    <main>
       
-      <h3>Data Pribadi</h3>
-      <ul>
-        <li><strong>Nama:</strong> Faiz Muhammad Ilham</li>
-        <li><strong>NIM:</strong> 1247050032</li>
-        <li><strong>Jurusan:</strong> Teknik Informatika</li>
-        <li><strong>Universitas:</strong> UIN Sunan Gunung Djati Bandung</li>
-      </ul>
+      <!-- Section Biodata -->
+      <section id="biodata">
+        <h2>👤 Biodata Singkat</h2>
+        <div class="profile-card">
+          <div class="profile-img-wrapper">
+            <!-- 📍 FOTO PROFIL SUDAH DIPANGGIL DI SINI -->
+            <img src="Faiz AI.png" alt="Foto Profil Faiz Muhammad Ilham" class="profile-img">
+          </div>
+          <div class="bio-details">
+            <ul>
+              <li><strong>Nama Lengkap:</strong> Faiz Muhammad Ilham</li>
+              <li><strong>NIM:</strong> 1247050032</li>
+              <li><strong>Jurusan:</strong> Teknik Informatika</li>
+              <li><strong>Angkatan:</strong> 2024</li>
+            </ul>
+            <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-muted);">
+              Mahasiswa Teknik Informatika yang memiliki ketertarikan pada pengembangan web, pemodelan basis data, dan arsitektur perangkat lunak modern.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <h3>Tentang Saya</h3>
-      <p>Saya adalah mahasiswa Teknik Informatika yang memiliki ketertarikan dalam pengembangan aplikasi web dan teknologi perangkat lunak.</p>
-    </section>
+      <!-- Section Tabel Mata Kuliah -->
+      <section id="matkul">
+        <h2>📚 Daftar Mata Kuliah Semester Ini</h2>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Kode MK</th>
+                <th>Mata Kuliah</th>
+                <th>SKS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>IF2601</td>
+                <td>Pengembangan Aplikasi Web</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>IF2602</td>
+                <td>Pengembangan Aplikasi Mobile</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>IF2603</td>
+                <td>Manajemen Basis Data</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>IF2604</td>
+                <td>Interaksi Manusia dan Komputer</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>IF2604</td>
+                <td>Jaringan Komputer</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>IF2604</td>
+                <td>Intelegensia Buatan</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>IF2604</td>
+                <td>Manajemen Proyek Perangkat Lunak</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <!-- Section Tabel Mata Kuliah -->
-    <section id="matkul">
-      <h2>Daftar Mata Kuliah Semester Ini</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Kode MK</th>
-            <th>Mata Kuliah</th>
-            <th>SKS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>IF2601</td>
-            <td>Pengembangan Aplikasi Web</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>IF2602</td>
-            <td>Sistem Operasi</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>IF2603</td>
-            <td>Basis Data</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>IF2604</td>
-            <td>Pemrograman Berorientasi Objek</td>
-            <td>3</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <!-- Section Tautan / Link -->
+      <section id="kontak">
+        <h2>🔗 Tautan & Portofolio</h2>
+        <div class="link-buttons">
+          <a href="https://github.com/faizmmly" target="_blank" rel="noopener noreferrer" class="btn-link">
+            ⚡ Profil GitHub
+          </a>
+          <a href="https://faizmuhammadilham.my.id" target="_blank" rel="noopener noreferrer" class="btn-link">
+            🌐 Portal Portofolio Utama
+          </a>
+        </div>
+      </section>
 
-    <!-- Section Tautan / Link -->
-    <section id="kontak">
-      <h2>Tautan & Media Sosial</h2>
-      <p>Kunjungi profil profesional dan repositori saya di:</p>
-      <ul>
-        <li><a href="https://github.com/faizmmly" target="_blank" rel="noopener noreferrer">GitHub Profil</a></li>
-        <li><a href="https://faizmuhammadilham.my.id" target="_blank" rel="noopener noreferrer">Portal Portofolio Utama</a></li>
-      </ul>
-    </section>
+    </main>
 
-  </main>
+    <!-- Footer Semantik -->
+    <footer>
+      <p>&copy; 2026 Faiz Muhammad Ilham. Dibuat untuk Tugas Praktikum HTML5.</p>
+    </footer>
+  </div>
 
-  <!-- Footer Semantik -->
-  <footer>
-    <p>&copy; 2026 Faiz Muhammad Ilham. Dibuat untuk Tugas Praktikum HTML5.</p>
-  </footer>
+  <!-- JavaScript Interaktif ringkas untuk indikator Navigasi -->
+  <script>
+    const navLinks = document.querySelectorAll('nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href').includes(current)) {
+          a.classList.add('active');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
