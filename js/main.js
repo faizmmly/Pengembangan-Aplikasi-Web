@@ -186,3 +186,43 @@ document.addEventListener('DOMContentLoaded', () => {
   updateModuleProgress();
   updateExamStatus();
 });
+
+// Toggle Mobile Sidebar Drawer
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  
+  if (sidebar && overlay) {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+  }
+}
+
+// Tutup sidebar otomatis jika link menu diklik (Mobile UX)
+document.querySelectorAll('.sidebar .menu-item').forEach(item => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth <= 900) {
+      toggleSidebar();
+    }
+  });
+});
+
+// Function Filter berdasarkan Status (Selesai / Mendatang)
+function filterStatus(status, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const cards = document.querySelectorAll('.week-item');
+  cards.forEach(card => {
+    const isCompleted = card.querySelector('.status-pill.completed');
+    if (status === 'all') {
+      card.style.display = 'flex';
+    } else if (status === 'completed' && isCompleted) {
+      card.style.display = 'flex';
+    } else if (status === 'pending' && !isCompleted) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}

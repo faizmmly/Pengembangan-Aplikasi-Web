@@ -10,10 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
   <!-- Top Navbar -->
   <header class="navbar">
     <div class="nav-left">
+      <button class="mobile-toogle-btn" id="mobileMenuBtn" onclick="toogleSidebar()" aria-label="Buka Menu">
+        <span class="hamburger-icon">☰</span>
+      </button>
+
       <div class="brand-logo">
         <span class="logo-icon">🎓</span>
         <div class="logo-text">
@@ -104,6 +109,11 @@
             <span class="search-icon">🔍</span>
             <input type="text" id="searchInput" placeholder="Cari topik atau modul..." onkeyup="filterWeeks()">
           </div>
+            <div class="filter-container">
+              <button class="filter-btn active" onclick="filterStatus('all', this)">Semua</button>
+              <button class="filter-btn" onclick="filterStatus('completed', this)">Selesai</button>
+              <button class="filter-btn" onclick="filterStatus('pending', this)">Mendatang</button>
+            </div>
         </div>
 
         <!-- Grid Kartu Pertemuan LMS Style -->
