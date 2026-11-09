@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penjelasan - Week 06</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="index.html">← Kembali ke Week 06</a>
+  <h1>Penjelasan Teknologi yang Digunakan</h1>
+  <p class="sub">Ringkasan penggunaan Git, npm, TypeScript, Vite, dan environment variables pada aplikasi Pengelola Daftar Tugas Kuliah.</p>
+
+  <section class="card">
+    <h2>Git dan GitHub</h2>
+    <p>Git mencatat riwayat perubahan kode lewat <code>commit</code>. Setiap fitur dikerjakan di <code>branch</code> sendiri, lalu digabung ke <code>main</code> lewat Pull Request. Jika dua branch mengubah baris yang sama, terjadi <code>merge conflict</code> yang diselesaikan manual. <code>push</code> mengirim commit ke GitHub dan <code>pull</code> mengambil pembaruan. File <code>.gitignore</code> mencegah <code>node_modules</code> dan <code>.env</code> terunggah.</p>
+  </section>
+
+  <section class="card">
+    <h2>npm</h2>
+    <p>npm adalah pengelola paket Node.js. File <code>package.json</code> menyimpan daftar paket dan perintah.</p>
+    <table>
+      <tr><th>Bagian</th><th>Fungsi</th></tr>
+      <tr><td><code>dependencies</code></td><td>Paket yang dibutuhkan saat aplikasi berjalan.</td></tr>
+      <tr><td><code>devDependencies</code></td><td>Paket khusus pengembangan, misalnya TypeScript dan Vite.</td></tr>
+      <tr><td><code>scripts</code></td><td><code>npm run dev</code>, <code>npm run build</code>, <code>npm run preview</code>.</td></tr>
+      <tr><td>Semantic versioning</td><td>Format MAJOR.MINOR.PATCH. Contoh <code>^5.4.0</code> boleh naik minor dan patch, tidak boleh naik major.</td></tr>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>TypeScript</h2>
+    <p>TypeScript adalah JavaScript dengan tipe statis sehingga kesalahan tipe ketahuan sebelum aplikasi dijalankan. Yang dipakai di aplikasi:</p>
+    <ul>
+      <li>Tipe primitif: <code>string</code>, <code>number</code>, <code>boolean</code></li>
+      <li>Array: <code>Task[]</code></li>
+      <li>Interface: <code>Task</code>, <code>DetailedStats</code>, <code>Reminder</code></li>
+      <li>Type alias dan union type: <code>Status</code>, <code>FilterStatus</code>, <code>SortBy</code></li>
+      <li>Generics: <code>Store&lt;T&gt;</code>, <code>filterBy&lt;T&gt;</code>, <code>sortItems&lt;T&gt;</code></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Compiler, transpiler, dan bundler</h2>
+    <ul>
+      <li><strong>Compiler:</strong> menerjemahkan kode ke bentuk lain sambil memeriksa kesalahan. TypeScript memeriksa tipe pada tahap ini.</li>
+      <li><strong>Transpiler:</strong> mengubah kode ke bahasa tingkat sama. TypeScript menjadi JavaScript yang bisa dibaca browser.</li>
+      <li><strong>Bundler:</strong> menggabungkan banyak file modul (TS, CSS) menjadi sedikit file kecil untuk produksi.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Vite</h2>
+    <p>Vite adalah build tool. Saat pengembangan, <code>npm run dev</code> menjalankan server cepat dengan hot reload. Saat <code>npm run build</code>, Vite mentranspile TypeScript, membundel file, dan menghasilkan folder <code>dist/</code> yang siap di-deploy.</p>
+  </section>
+
+  <section class="card">
+    <h2>Environment variables</h2>
+    <p>Konfigurasi disimpan di <code>.env</code> (tidak diunggah ke GitHub). <code>.env.example</code> menjadi template yang aman dibagikan.</p>
+    <table>
+      <tr><th>Variabel</th><th>Fungsi</th></tr>
+      <tr><td><code>VITE_APP_NAME</code></td><td>Nama aplikasi</td></tr>
+      <tr><td><code>VITE_APP_VERSION</code></td><td>Versi aplikasi</td></tr>
+    </table>
+    <p style="margin-top:10px">Variabel berawalan <code>VITE_</code> ikut tertanam di hasil build dan terlihat di browser, jadi hanya dipakai untuk data non-rahasia. Password dan API key tidak disimpan di sini.</p>
+  </section>
+</main>
+</body>
+</html>

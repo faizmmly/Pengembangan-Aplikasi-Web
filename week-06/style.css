@@ -1,0 +1,31 @@
+:root{--bg:#0a1220;--panel:#111b2e;--line:#22314d;--text:#e6edf7;--muted:#93a4bf;--accent:#38bdf8;--ok:#34d399}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:24px 16px}
+.wrap{max-width:860px;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.back{display:inline-block;margin-bottom:20px;font-size:.9rem;text-decoration:none}
+h1{font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.2;margin-bottom:6px}
+h2{font-size:1.15rem;margin:0 0 8px}
+.sub{color:var(--muted);margin-bottom:28px;max-width:60ch}
+.badge{display:inline-block;font-size:.78rem;font-weight:600;color:var(--ok);border:1px solid var(--ok);border-radius:999px;padding:2px 10px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.tile{display:flex;flex-direction:column;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:var(--text);transition:border-color .2s,transform .2s}
+.tile:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tile .ico{font-size:1.8rem}
+.tile strong{font-size:1.05rem}
+.tile span.d{color:var(--muted);font-size:.9rem}
+.tile.main{border-color:var(--accent)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px}
+.card p,.card li{color:var(--muted);max-width:70ch}
+.card ul{padding-left:20px;margin-top:6px}
+code{background:#0a1220;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.88em;color:var(--text)}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.92rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
+th{color:var(--text)}
+figure{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:16px}
+figure img{width:100%;height:auto;border-radius:8px;display:block;background:#0a1220;min-height:60px}
+figcaption{margin-top:10px;font-size:.92rem;color:var(--muted)}
+figcaption strong{color:var(--text);display:block}
+.meta{color:var(--muted);font-size:.9rem;margin-top:28px;border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){.tile{transition:none}}
