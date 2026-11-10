@@ -192,8 +192,10 @@ function toggleSidebar() {
   const sidebar = document.querySelector('.sidebar');
   const overlay = document.getElementById('sidebarOverlay');
   
-  if (sidebar && overlay) {
-    sidebar.classList.toggle('open');
+  if (sidebar) {
+    sidebar.classList.toggle('active');
+  }
+  if (overlay) {
     overlay.classList.toggle('active');
   }
 }
