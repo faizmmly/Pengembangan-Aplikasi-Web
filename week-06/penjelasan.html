@@ -44,9 +44,9 @@
   <section class="card">
     <h2>Compiler, transpiler, dan bundler</h2>
     <ul>
-      <li><strong>Compiler:</strong> menerjemahkan kode ke bentuk lain sambil memeriksa kesalahan. TypeScript memeriksa tipe pada tahap ini.</li>
-      <li><strong>Transpiler:</strong> mengubah kode ke bahasa tingkat sama. TypeScript menjadi JavaScript yang bisa dibaca browser.</li>
-      <li><strong>Bundler:</strong> menggabungkan banyak file modul (TS, CSS) menjadi sedikit file kecil untuk produksi.</li>
+        <li><strong>Compiler:</strong> <code>tsc</code> memeriksa tipe pada kode TypeScript dan melaporkan kesalahan sebelum aplikasi dibangun.</li>
+        <li><strong>Transpiler:</strong> mengubah TypeScript menjadi JavaScript biasa yang bisa dibaca browser. Pada proyek ini dilakukan oleh Vite.</li>
+        <li><strong>Bundler:</strong> Vite menggabungkan banyak file modul (TS, CSS) menjadi sedikit file kecil di folder <code>dist/</code>.</li>
     </ul>
   </section>
 
