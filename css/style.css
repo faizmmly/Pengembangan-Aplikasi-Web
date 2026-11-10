@@ -913,7 +913,8 @@ input:focus-visible {
     left: -280px;
     width: 270px;
     height: 100vh;
-    z-index: 150;
+    z-index: 900;
+    padding-top: 88px;
     transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
   }
@@ -943,6 +944,10 @@ input:focus-visible {
     padding: 6px 10px;
     border-radius: 50%;
   }
+}
+
+@media (max-width: 480px) {
+  .topbar, header { padding-left: 12px; padding-right: 12px; gap: 8px; }
 }
 
 /* --- PENGATURAN KHUSUS LAYAR HP / MOBILE (< 768px) --- */
