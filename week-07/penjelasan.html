@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penjelasan Konsep React - Week 07</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <nav class="breadcrumb">
+        <a href="index.html">← Kembali ke Menu Week 07</a>
+        <span class="status-badge">Dokumentasi</span>
+      </nav>
+
+      <header class="page-header">
+        <h1>Penjelasan Konsep & Komponen React</h1>
+        <p>Detail implementasi Component-Based UI Development pada aplikasi AgendaKu.</p>
+      </header>
+
+      <section class="content-card">
+        <h2>1. React Components (Arsitektur Komponen)</h2>
+        <p>Aplikasi dipecah ke dalam beberapa komponen modular yang terpisah di dalam folder <code>src/components/</code> agar kode lebih bersih, terstruktur, dan mudah dirawat:</p>
+        <ul>
+          <li><strong>Header.tsx / Profil:</strong> Menampilkan identitas mahasiswa (Nama, NIM, kelas) secara dinamis.</li>
+          <li><strong>StatsCard.tsx:</strong> Komponen kartu statistik untuk merangkum jumlah kegiatan harian dan tugas selesai.</li>
+          <li><strong>TaskCard.tsx:</strong> Komponen kartu individual yang bersifat <em>reusable</em> untuk menampilkan rincian setiap kegiatan.</li>
+          <li><strong>TaskForm.tsx:</strong> Formulir interaktif untuk menambah dan memperbarui data kegiatan.</li>
+          <li><strong>CalendarView.tsx:</strong> Komponen kalender interaktif untuk memantau agenda berdasarkan tanggal.</li>
+        </ul>
+      </section>
+
+      <section class="content-card">
+        <h2>2. Props (Pengiriman Data)</h2>
+        <p>Props digunakan untuk mengirimkan data dari komponen induk (<em>parent</em>, seperti <code>App.tsx</code>) ke komponen anak (<em>child</em>). Contohnya, objek data kegiatan dikirimkan ke <code>TaskCard</code> agar komponen kartu dapat merender judul, mata kuliah, dan tenggat waktu secara spesifik.</p>
+      </section>
+
+      <section class="content-card">
+        <h2>3. State & useState (Pengelolaan Data Reaktif)</h2>
+        <p><code>useState</code> digunakan untuk menyimpan dan mengelola data yang dapat berubah secara dinamis di dalam aplikasi, seperti:</p>
+        <ul>
+          <li>Menyimpan daftar array kegiatan (state <code>tasks</code>).</li>
+          <li>Mengelola status kategori filter yang sedang aktif (state <code>currentFilter</code>).</li>
+          <li>Menangani teks pencarian kata kunci secara <em>real-time</em>.</li>
+          <li>Mengontrol visibilitas modal konfirmasi dan notifikasi <em>toast</em>.</li>
+        </ul>
+      </section>
+
+      <section class="content-card">
+        <h2>4. Event Handling & Rendering</h2>
+        <p><strong>Event Handling:</strong> Menangani interaksi pengguna seperti klik tombol aksi (ubah status, edit, hapus), pengisian formulir, dan pengetikan teks pada kolom pencarian.</p>
+        <p><strong>List & Conditional Rendering:</strong> Menggunakan metode JavaScript <code>.map()</code> untuk merender array daftar kegiatan secara dinamis, serta menangani kondisi tampilan kosong (<em>empty state</em>) ketika data tidak ditemukan.</p>
+      </section>
+
+      <footer class="page-footer">
+        <p>Faiz Muhammad Ilham Hariry • 1247050032 • IF A 24 • Pengembangan Aplikasi Web</p>
+      </footer>
+    </main>
+  </body>
+</html>
