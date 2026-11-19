@@ -6,50 +6,89 @@ html {
 }
 
 :root {
-  /* Dark Mode Default */
-  --bg-body: #0b0f19;
-  --bg-nav: rgba(15, 20, 28, 0.88);
-  --bg-sidebar: rgba(15, 20, 28, 0.96);
-  --bg-card: rgba(22, 27, 34, 0.82);
-  --bg-card-subtle: rgba(15, 20, 28, 0.55);
-  --bg-banner: linear-gradient(135deg, rgba(22, 27, 34, 0.95), rgba(15, 23, 42, 0.88));
-  --bg-input: #111827;
-  --text-main: #f9fafb;
-  --text-muted: #9ca3af;
-  --border-color: rgba(255, 255, 255, 0.09);
-  --tag-bg: rgba(255, 255, 255, 0.06);
+  --bg-main: #0c1424;
+  --bg-body: #0c1424;
+  --bg-card: #131f36;
+  --bg-sidebar: #0f192d;
+  --border-color: rgba(148, 163, 184, 0.14);
+
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
 
   --accent-blue: #38bdf8;
-  --accent-blue-btn: #2563eb;
+  --accent-blue-btn: #1d8cf8;
   --accent-green: #22c55e;
-  --accent-amber: #f59e0b;
-  --accent-purple: #c084fc;
-
-  --modal-overlay: rgba(3, 7, 18, 0.85);
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.15);
-  --shadow-md: 0 12px 28px -8px rgba(0, 0, 0, 0.45);
-  --nav-height: 68px;
+  --accent-amber: #fbbf24;
+  --tag-bg: rgba(56, 189, 248, 0.1);
 }
 
 body.light-mode {
-  /* Light Mode Overrides */
-  --bg-body: #f1f5f9;
-  --bg-nav: rgba(255, 255, 255, 0.9);
-  --bg-sidebar: #ffffff;
+  --bg-main: #f5f9fc;
+  --bg-body: #f5f9fc;
   --bg-card: #ffffff;
-  --bg-card-subtle: #f8fafc;
-  --bg-banner: linear-gradient(135deg, #ffffff, #eff6ff);
-  --bg-input: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  --tag-bg: #f1f5f9;
+  --bg-sidebar: #ffffff;
+  --border-color: #e2ecf5;
 
-  --accent-blue: #0284c7;
-  --accent-blue-btn: #0284c7;
-  --modal-overlay: rgba(15, 23, 42, 0.55);
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+  --text-main: #182230;
+  --text-muted: #64748b;
+
+  --accent-blue: #1d8cf8;
+  --accent-blue-btn: #1d8cf8;
+  --accent-green: #16a34a;
+  --accent-amber: #f59e0b;
+  --tag-bg: #eef5fb;
+}
+
+/* Banner Hero ala Sky Gradient (Light Mode) */
+body.light-mode .course-banner {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 55%, #dbeafe 100%) !important;
+  border: 1px solid #bae6fd !important;
+  box-shadow: 0 8px 24px -8px rgba(29, 140, 248, 0.18) !important;
+}
+
+body.light-mode .course-banner h1 {
+  color: #0f172a !important;
+}
+
+body.light-mode .course-banner .course-desc {
+  color: #334155 !important;
+}
+
+/* Kartu Statistik di dalam Banner (Putih Bersih dengan Bayangan Halus) */
+body.light-mode .stat-card {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Sidebar Item Aktif ala Pill Biru Lembut */
+body.light-mode .sidebar-menu .menu-item.active {
+  background: #e6f3ff !important;
+  color: #1d8cf8 !important;
+  font-weight: 600;
+}
+
+/* Strip 16 Minggu di Light Mode */
+body.light-mode .week-strip-wrap {
+  border-top-color: rgba(29, 140, 248, 0.18) !important;
+}
+
+body.light-mode .week-strip-cell {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: #cde3f7 !important;
+  color: #475569 !important;
+}
+
+body.light-mode .week-strip-cell.is-done {
+  background: #dcfce7 !important;
+  border-color: #86efac !important;
+  color: #15803d !important;
+}
+
+body.light-mode .week-strip-cell.is-exam {
+  border-color: #f59e0b !important;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.35) !important;
 }
 
 * {
@@ -390,6 +429,95 @@ input:focus-visible {
 }
 
 /* ==========================================================================
+   Donut Ring SVG pada Kartu Progress Modul
+   ========================================================================== */
+.stat-card.stat-progress {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  text-align: left !important;
+}
+
+.stat-card.stat-progress .stat-icon-wrap {
+  flex-shrink: 0;
+  margin-bottom: 0 !important;
+}
+
+.stat-card.stat-progress .stat-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-card.stat-progress .donut-wrap {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  margin-top: 0 !important;
+}
+
+.stat-card.stat-progress .donut-svg {
+  width: 58px;
+  height: 58px;
+}
+
+.stat-card.stat-progress .stat-info {
+  flex: 1 1 auto;
+}
+
+.stat-card.stat-uts,
+.stat-card.stat-uas {
+  justify-content: center !important;
+  gap: 10px !important;
+}
+
+.donut-wrap {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-svg {
+  width: 54px;
+  height: 54px;
+  transform: rotate(-90deg);
+}
+
+.donut-track,
+.donut-fill {
+  fill: none;
+  stroke-width: 5;
+}
+
+.donut-track {
+  stroke: var(--tag-bg);
+}
+
+.donut-fill {
+  stroke: url(#donutGrad);
+  stroke: #1d8cf8;
+  stroke-linecap: round;
+  stroke-dasharray: 106.81; /* 2 * PI * 17 */
+  stroke-dashoffset: 73.4;  /* Default ~31.25% */
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.donut-label {
+  position: absolute;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
    Stats Grid (Hierarki Visual Jelas)
    ========================================================================== */
 .stats-grid {
@@ -417,11 +545,11 @@ input:focus-visible {
 }
 
 .stat-title {
-  font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.82rem;
 }
 
 .stat-value-group {
@@ -625,6 +753,7 @@ input:focus-visible {
   gap: 8px;
   margin-top: auto;
   margin-bottom: auto;
+  margin: 4px 0 0 0;
 }
 
 .card.placeholder-card .card-title::before {
@@ -757,6 +886,26 @@ input:focus-visible {
   flex: 1 1 auto;
 }
 
+/* Tombol Utama, Filter Aktif, & Pintasan Tugas Terbaru */
+.card-actions .btn-primary,
+.filter-btn.active,
+.latest-link {
+  background-color: #1d8cf8 !important;
+  border-color: #1d8cf8 !important;
+  color: #ffffff !important;
+}
+
+.card-actions .btn-primary:hover,
+.latest-link:hover {
+  background-color: #0f7ae5 !important;
+  text-decoration: none !important;
+}
+
+/* Garis Aksen Kiri Kartu Selesai */
+.card.week-item:not(.placeholder-card)::before {
+  background: linear-gradient(180deg, #1d8cf8, #38bdf8) !important;
+}
+
 /* Menangkap semua variasi class tombol GitHub (.btn-secondary, .btn-github, .btn-outline) */
 .card-actions .btn-secondary,
 .card-actions .btn-github,
@@ -777,6 +926,12 @@ input:focus-visible {
   background: rgba(56, 189, 248, 0.12);
   border-color: var(--accent-blue);
   color: var(--accent-blue);
+}
+
+.card-actions .btn-secondary,
+.card-actions .btn-github {
+  flex: 0 0 auto;
+  padding: 9px 14px;
 }
 
 .btn-primary {
@@ -913,25 +1068,76 @@ input:focus-visible {
     justify-content: center;
   }
 
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 275px;
-    height: 100dvh;
-    padding-top: calc(var(--nav-height) + 16px);
-    transform: translateX(-100%);
-    box-shadow: 12px 0 32px rgba(0, 0, 0, 0.45);
+  /* Konten utama menggunakan lebar penuh layar HP */
+  .lms-layout {
+    display: block;
   }
 
-  /* Mendukung kedua nama class JS (.open maupun .active) */
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* Sidebar menjadi drawer melayang dan tersembunyi ke kiri secara default */
+  .sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 260px;
+    height: calc(100dvh - 64px);
+    padding: 16px 14px 24px;
+    z-index: 1000;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Munculkan sidebar saat dibuka (.open atau .active) */
   .sidebar.open,
   .sidebar.active {
     transform: translateX(0);
   }
 
+  /* Overlay gelap di belakang drawer */
+  .sidebar-overlay {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(2, 6, 23, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+    display: none;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  /* Pastikan navbar memiliki tinggi konsisten */
   .navbar {
-    padding: 0 16px;
+    height: 64px;
+    padding: 0 14px;
+    z-index: 1001;
+  }
+
+  /* Rapikan ukuran elemen navbar di layar HP sempit */
+  .brand-title {
+    font-size: 0.95rem;
+  }
+
+  .mobile-toggle-btn,
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0;
   }
 
   .brand-subtitle,
@@ -997,5 +1203,166 @@ input:focus-visible {
   .modal-card {
     height: 90dvh;
     border-radius: 14px;
+  }
+}
+
+/* ==========================================================================
+   Penyempurnaan
+   ========================================================================== */
+
+/* Label statistik: huruf biasa, tanpa jarak lebar */
+.stat-title { text-transform: none; letter-spacing: 0; font-size: .85rem; font-weight: 500; }
+
+/* Tombol: utama memanjang, GitHub menyesuaikan, selalu satu baris jika muat */
+.card .card-actions .btn-primary { flex: 1 1 150px; width: auto !important; }
+.card .card-actions a.btn-secondary,
+.card .card-actions button.btn-secondary { flex: 0 0 auto; width: auto !important; }
+
+/* Kartu mendatang: ringkas dan redup */
+.card.placeholder-card { min-height: unset; align-self: start; padding: 16px 20px; }
+
+/* Strip 16 minggu */
+.week-strip { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: 6px; margin-top: 20px; }
+.week-strip button { height: 34px; padding: 0; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;
+  background: var(--tag-bg); color: var(--text-muted); font-size: .72rem; font-weight: 600;
+  transition: transform .15s ease, border-color .2s ease; }
+.week-strip button:hover { transform: translateY(-2px); border-color: var(--accent-blue); }
+.week-strip button.is-done { background: var(--accent-green); border-color: transparent; color: #04210f; }
+.week-strip button.is-exam { box-shadow: inset 0 0 0 2px var(--accent-amber); }
+/* 4. Strip 16 Minggu Interaktif */
+.week-strip-wrap {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.week-strip {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.week-strip-cell {
+  height: 28px;
+  border-radius: 7px;
+  background: var(--tag-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.week-strip-cell:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-blue);
+  color: var(--text-main);
+}
+
+.week-strip-cell.is-done {
+  background: rgba(34, 197, 94, 0.18);
+  border-color: rgba(34, 197, 94, 0.45);
+  color: var(--accent-green);
+}
+
+.week-strip-cell.is-exam {
+  border-color: var(--accent-amber);
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.25);
+}
+
+.week-strip-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.week-strip-caption {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.course-banner > .week-strip-caption { margin-top: 10px; font-size: .85rem; max-width: none; }
+.latest-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; padding: 8px 16px; border-radius: 999px;
+  background: var(--accent-blue-btn); color: #fff; font-size: .85rem; font-weight: 600; text-decoration: none;
+  transition: filter .2s ease; }
+.latest-link:hover { filter: brightness(1.1); text-decoration: underline; }
+
+/* Kartu yang dituju strip */
+.week-item.is-pinged { border-color: var(--accent-blue); box-shadow: 0 0 0 3px var(--accent-blue); }
+
+/* 6. Sorotan (ping) saat kartu dituju dari strip */
+@keyframes cardPing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.65);
+    border-color: var(--accent-blue);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
+    border-color: var(--accent-blue);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+  }
+}
+
+.card.is-pinged {
+  animation: cardPing 1.4s ease-out;
+  border-color: var(--accent-blue);
+}
+
+/* 7. Strip menjadi 8 kolom di layar HP */
+@media (max-width: 640px) {
+  .week-strip {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+
+/* 8. Aksesibilitas Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .week-strip { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+}
+
+/* Hormati pengguna yang mengurangi gerakan */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 16px 12px 32px !important;
+  }
+
+  .course-banner {
+    padding: 20px 16px !important;
+  }
+
+  .course-banner h1 {
+    font-size: 1.35rem !important;
+  }
+
+  .stats-grid,
+  .weeks-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
   }
 }

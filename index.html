@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pengembangan Aplikasi Web - Faiz Muhammad Ilham</title>
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -86,6 +86,7 @@
         <div class="stats-grid">
           
           <!-- Card 1: Progress Modul -->
+          <!-- Card 1: Progress Modul dengan Donut Ring -->
           <div class="stat-card stat-progress">
             <div class="stat-icon-wrap">📊</div>
             <div class="stat-info">
@@ -93,9 +94,14 @@
               <div class="stat-value-group">
                 <span class="stat-value" id="progressText">5 <small>/ 16</small></span>
               </div>
+              <span class="stat-subtext" id="progressPercentText">31.3% tercapai</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" id="progressBarFill" style="width: 31.25%;"></div>
+            <div class="donut-wrap" aria-hidden="true">
+              <svg class="donut-svg" viewBox="0 0 44 44">
+                <circle class="donut-track" cx="22" cy="22" r="17" />
+                <circle class="donut-fill" id="progressDonutFill" cx="22" cy="22" r="17" />
+              </svg>
+              <span class="donut-label" id="donutPercentLabel">31%</span>
             </div>
           </div>
 
@@ -119,6 +125,15 @@
             </div>
           </div>
 
+        </div>
+
+        <!-- Strip Progres 16 Minggu -->
+        <div class="week-strip-wrap">
+          <div class="week-strip" id="weekStrip" aria-label="Navigasi cepat 16 minggu"></div>
+          <div class="week-strip-meta">
+            <span class="week-strip-caption" id="weekStripCaption">Memuat progres mingguan...</span>
+            <span id="latestSlot"></span>
+          </div>
         </div>
       </section>
 
@@ -177,7 +192,7 @@
               <span>Git</span>
             </div>
             <div class="card-actions">
-              <a href="profile/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration: none;">
+              <a href="profile/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                 <span>🌐</span> Lihat Halaman Web
               </a>
             </div>
@@ -225,10 +240,10 @@
               <span>npm</span>
             </div>
             <div class="card-actions">
-              <a href="week-06/" class="btn btn-primary" style="text-decoration: none;">
+              <a href="week-06/" class="btn btn-primary">
                 <span>🌐</span> Lihat Halaman Web
               </a>
-              <a href="https://github.com/faizmmly/pengelola-daftar-tugas-kuliah" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-decoration: none;">
+              <a href="https://github.com/faizmmly/pengelola-daftar-tugas-kuliah" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                 <span>💻</span> GitHub
               </a>
             </div>
@@ -249,10 +264,10 @@
               <span>Component-Based</span>
             </div>
             <div class="card-actions">
-              <a href="week-07/" class="btn btn-primary" style="text-decoration: none;">
+              <a href="week-07/" class="btn btn-primary">
                 <span>🌐</span> Lihat Halaman Web
               </a>
-              <a href="https://github.com/faizmmly/pengelola-daftar-tugas-kuliah" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-decoration: none;">
+              <a href="https://github.com/faizmmly/Aplikasi-Daftar-Kegiatan" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                 <span>💻</span> GitHub
               </a>
             </div>
@@ -274,10 +289,10 @@
               <span>Vite</span>
             </div>
             <div class="card-actions">
-              <a href="week-08/" class="btn btn-primary" style="text-decoration: none;">
+              <a href="week-08/" class="btn btn-primary">
                 <span>🌐</span> Lihat Halaman Web
               </a>
-              <a href="https://github.com/faizmmly/katalog-produk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-decoration: none;">
+              <a href="https://github.com/faizmmly/katalog-produk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                 <span>💻</span> GitHub
               </a>
             </div>
@@ -377,6 +392,6 @@
   </div>
 
   <!-- External JS File -->
-  <script src="js/main.js?v=1.0.1"></script>
+  <script src="js/main.js?v=1.0.2"></script>
 </body>
 </html>
