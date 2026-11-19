@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pengembangan Aplikasi Web - Faiz Muhammad Ilham</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
     <aside class="sidebar">
       <nav class="sidebar-menu">
         <a href="#overview" class="menu-item active">
-          <span class="menu-icon">📊</span> Overview & Progress
+          <span class="menu-icon">📊</span> Overview &amp; Progress
         </a>
         <a href="#tasks" class="menu-item">
           <span class="menu-icon">📚</span> Tugas (16 Week)
@@ -73,7 +73,6 @@
     <main class="main-content">
       
       <!-- Course Hero / Banner -->
-      <!-- Course Hero / Banner -->
       <section class="course-banner" id="overview">
         <div class="banner-badge-wrapper">
           <span class="banner-badge">IF-2026 • Semester 5</span>
@@ -81,9 +80,9 @@
         </div>
         
         <h1>Pengembangan Aplikasi Web</h1>
-        <p class="course-desc">Portofolio tugas & laporan mingguan praktikum pemrograman web dari Week 01 hingga Week 16.</p>
+        <p class="course-desc">Portofolio tugas &amp; laporan mingguan praktikum pemrograman web dari Week 01 hingga Week 16.</p>
 
-        <!-- Stats Overview Cards (Modern & Interactive) -->
+        <!-- Stats Overview Cards -->
         <div class="stats-grid">
           
           <!-- Card 1: Progress Modul -->
@@ -92,11 +91,11 @@
             <div class="stat-info">
               <span class="stat-title">Progress Modul</span>
               <div class="stat-value-group">
-                <span class="stat-value" id="progressText">3 <small>/ 16</small></span>
+                <span class="stat-value" id="progressText">5 <small>/ 16</small></span>
               </div>
             </div>
             <div class="progress-bar-bg">
-              <div class="progress-bar-fill" id="progressBarFill" style="width: 18.75%;"></div>
+              <div class="progress-bar-fill" id="progressBarFill" style="width: 31.25%;"></div>
             </div>
           </div>
 
@@ -105,7 +104,7 @@
             <div class="stat-icon-wrap amber">🎖️</div>
             <div class="stat-info">
               <span class="stat-title">Status UTS</span>
-              <span class="stat-value text-amber" id="status-uts">Terjadwal (W8)</span>
+              <span class="stat-value text-amber" id="status-uts">Selesai (W8)</span>
               <span class="stat-subtext">Ujian Tengah Semester</span>
             </div>
           </div>
@@ -127,30 +126,30 @@
       <section class="section-container" id="tasks">
         <div class="section-header">
           <div>
-            <h2>Daftar Pertemuan & Laporan</h2>
+            <h2>Daftar Pertemuan &amp; Laporan</h2>
             <p class="section-subtitle">Pilih modul untuk melihat atau mengunduh laporan PDF tugas praktikum</p>
           </div>
           <div class="search-box">
             <span class="search-icon">🔍</span>
             <input type="text" id="searchInput" placeholder="Cari topik atau modul..." onkeyup="filterWeeks()">
           </div>
-            <div class="filter-container">
-              <button class="filter-btn active" onclick="filterStatus('all', this)">Semua</button>
-              <button class="filter-btn" onclick="filterStatus('completed', this)">Selesai</button>
-              <button class="filter-btn" onclick="filterStatus('pending', this)">Mendatang</button>
-            </div>
+          <div class="filter-container">
+            <button class="filter-btn active" onclick="filterStatus('all', this)">Semua</button>
+            <button class="filter-btn" onclick="filterStatus('completed', this)">Selesai</button>
+            <button class="filter-btn" onclick="filterStatus('pending', this)">Mendatang</button>
+          </div>
         </div>
 
         <!-- Grid Kartu Pertemuan LMS Style -->
         <div class="weeks-grid" id="weeksGrid">
 
-          <!-- Week 01 (Aktif) -->
+          <!-- Week 01 -->
           <div class="card week-item">
             <div class="card-top">
               <span class="week-tag">Week 01</span>
               <span class="status-pill completed">Selesai</span>
             </div>
-            <h3 class="card-title">Setup Environment & Dasar HTML5</h3>
+            <h3 class="card-title">Setup Environment &amp; Dasar HTML5</h3>
             <p class="card-desc">Laporan praktikum struktur Web, HTTP Request Investigation</p>
             <div class="tech-tags">
               <span>HTML5</span>
@@ -178,7 +177,7 @@
               <span>Git</span>
             </div>
             <div class="card-actions">
-              <a href="profile/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration: none; width: 100%; text-align: center;">
+              <a href="profile/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration: none;">
                 <span>🌐</span> Lihat Halaman Web
               </a>
             </div>
@@ -190,7 +189,7 @@
               <span class="week-tag">Week 03</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 04 -->
@@ -199,7 +198,7 @@
               <span class="week-tag">Week 04</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 05 -->
@@ -208,7 +207,7 @@
               <span class="week-tag">Week 05</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 06 -->
@@ -226,7 +225,7 @@
               <span>npm</span>
             </div>
             <div class="card-actions">
-              <a href="week-06/" class="btn btn-primary" style="text-decoration: none; width: 100%;">
+              <a href="week-06/" class="btn btn-primary" style="text-decoration: none;">
                 <span>🌐</span> Lihat Halaman Web
               </a>
               <a href="https://github.com/faizmmly/pengelola-daftar-tugas-kuliah" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-decoration: none;">
@@ -250,7 +249,7 @@
               <span>Component-Based</span>
             </div>
             <div class="card-actions">
-              <a href="week-07/" class="btn btn-primary" style="text-decoration: none; width: 100%;">
+              <a href="week-07/" class="btn btn-primary" style="text-decoration: none;">
                 <span>🌐</span> Lihat Halaman Web
               </a>
               <a href="https://github.com/faizmmly/pengelola-daftar-tugas-kuliah" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-decoration: none;">
@@ -275,7 +274,7 @@
               <span>Vite</span>
             </div>
             <div class="card-actions">
-              <a href="week-08/" class="btn btn-primary" style="text-decoration: none; width: 100%;">
+              <a href="week-08/" class="btn btn-primary" style="text-decoration: none;">
                 <span>🌐</span> Lihat Halaman Web
               </a>
               <a href="https://github.com/faizmmly/katalog-produk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-decoration: none;">
@@ -283,7 +282,6 @@
               </a>
             </div>
           </div>
-          
 
           <!-- Week 09 -->
           <div class="card week-item placeholder-card">
@@ -291,7 +289,7 @@
               <span class="week-tag">Week 09</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 10 -->
@@ -300,7 +298,7 @@
               <span class="week-tag">Week 10</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 11 -->
@@ -309,7 +307,7 @@
               <span class="week-tag">Week 11</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 12 -->
@@ -318,7 +316,7 @@
               <span class="week-tag">Week 12</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 13 -->
@@ -327,7 +325,7 @@
               <span class="week-tag">Week 13</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 14 -->
@@ -336,7 +334,7 @@
               <span class="week-tag">Week 14</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 15 -->
@@ -345,7 +343,7 @@
               <span class="week-tag">Week 15</span>
               <span class="status-pill pending">Mendatang</span>
             </div>
-            <h3 class="card-title">Materi & Tugas Belum Dirilis</h3>
+            <h3 class="card-title">Materi &amp; Tugas Belum Dirilis</h3>
           </div>
 
           <!-- Week 16 (UAS) -->
