@@ -2,6 +2,8 @@
    Main JavaScript - Tracking Tugas LMS
    ========================================================================== */
 
+let activeStatusFilter = 'all';
+
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initModalEvents();
@@ -9,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateModuleProgress();
   updateExamStatus();
   initWeekStrip();
+  initFilterCounts();
 });
 
 /* ==========================================================================
@@ -95,14 +98,45 @@ function initModalEvents() {
 }
 
 /* ==========================================================================
-   3. Search & Filter Cards
+   3. Search, Filter Status, Counter & Empty State
    ========================================================================== */
-function filterWeeks() {
+function initFilterCounts() {
+  const cards = Array.from(document.querySelectorAll('.weeks-grid .week-item'));
+  const totalCount = cards.length;
+  const completedCount = cards.filter((c) => c.querySelector('.status-pill.completed')).length;
+  const pendingCount = totalCount - completedCount;
+
+  document.querySelectorAll('.filter-btn').forEach((btn) => {
+    const onclickAttr = btn.getAttribute('onclick') || '';
+    const dataFilter = btn.getAttribute('data-filter') || '';
+
+    if (dataFilter === 'all' || onclickAttr.includes("'all'")) {
+      btn.textContent = `Semua (${totalCount})`;
+    } else if (dataFilter === 'completed' || onclickAttr.includes("'completed'")) {
+      btn.textContent = `Selesai (${completedCount})`;
+    } else if (dataFilter === 'pending' || onclickAttr.includes("'pending'")) {
+      btn.textContent = `Mendatang (${pendingCount})`;
+    }
+  });
+}
+
+function applyCombinedFilters() {
   const input = document.getElementById('searchInput');
-  const filter = input ? input.value.toLowerCase().trim() : '';
-  const weekCards = document.querySelectorAll('.weeks-grid .card');
+  const query = input ? input.value.toLowerCase().trim() : '';
+  const weeksGrid = document.querySelector('.weeks-grid');
+  const weekCards = Array.from(document.querySelectorAll('.weeks-grid .week-item'));
+
+  if (!weeksGrid) return;
+
+  let visibleCount = 0;
 
   weekCards.forEach((card) => {
+    const isCompleted = Boolean(card.querySelector('.status-pill.completed'));
+    const matchesStatus =
+      activeStatusFilter === 'all' ||
+      (activeStatusFilter === 'completed' && isCompleted) ||
+      (activeStatusFilter === 'pending' && !isCompleted);
+
     const weekTag = card.querySelector('.week-tag')?.textContent.toLowerCase() || '';
     const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
     const desc = card.querySelector('.card-desc')?.textContent.toLowerCase() || '';
@@ -110,36 +144,57 @@ function filterWeeks() {
       .map((span) => span.textContent.toLowerCase())
       .join(' ');
 
-    if (weekTag.includes(filter) || title.includes(filter) || desc.includes(filter) || tags.includes(filter)) {
+    const matchesQuery =
+      !query ||
+      weekTag.includes(query) ||
+      title.includes(query) ||
+      desc.includes(query) ||
+      tags.includes(query);
+
+    if (matchesStatus && matchesQuery) {
       card.style.display = 'flex';
+      visibleCount++;
     } else {
       card.style.display = 'none';
     }
   });
+
+  // Kelola pesan "Tidak ditemukan"
+  let emptyState = document.getElementById('emptySearchMessage');
+  if (!emptyState) {
+    emptyState = document.createElement('div');
+    emptyState.id = 'emptySearchMessage';
+    emptyState.style.cssText =
+      'display: none; grid-column: 1 / -1; text-align: center; padding: 40px 20px; border-radius: 14px; background: var(--bg-card, rgba(18, 30, 54, 0.6)); border: 1px dashed var(--border-color, rgba(148, 163, 184, 0.25)); color: var(--text-muted, #94a3b8);';
+    emptyState.innerHTML = `
+      <div style="font-size: 2rem; margin-bottom: 8px;">🔍</div>
+      <p style="font-size: 1rem; font-weight: 600; color: var(--text-main, #f1f5f9); margin-bottom: 4px;">Modul tidak ditemukan</p>
+      <p style="font-size: 0.86rem; margin-bottom: 14px;">Tidak ada topik atau teknologi yang cocok dengan pencarianmu.</p>
+      <button type="button" onclick="resetAllFilters()" style="padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(56, 189, 248, 0.35); background: rgba(29, 140, 248, 0.15); color: #38bdf8; font-size: 0.84rem; font-weight: 600; cursor: pointer;">Reset Pencarian</button>
+    `;
+    weeksGrid.appendChild(emptyState);
+  }
+
+  emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+}
+
+function filterWeeks() {
+  applyCombinedFilters();
 }
 
 function filterStatus(status, btn) {
+  activeStatusFilter = status || 'all';
   document.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput && searchInput.value) {
-    searchInput.value = '';
-  }
+  applyCombinedFilters();
+}
 
-  const cards = document.querySelectorAll('.week-item');
-  cards.forEach((card) => {
-    const isCompleted = card.querySelector('.status-pill.completed');
-    if (status === 'all') {
-      card.style.display = 'flex';
-    } else if (status === 'completed' && isCompleted) {
-      card.style.display = 'flex';
-    } else if (status === 'pending' && !isCompleted) {
-      card.style.display = 'flex';
-    } else {
-      card.style.display = 'none';
-    }
-  });
+function resetAllFilters() {
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) searchInput.value = '';
+  const allBtn = document.querySelector('.filter-btn');
+  filterStatus('all', allBtn);
 }
 
 /* ==========================================================================
@@ -227,15 +282,13 @@ function updateExamStatus() {
 function scrollToAndPingCard(targetCard) {
   if (!targetCard) return;
 
-  // Pastikan semua kartu tampil jika sebelumnya sedang difilter
   if (targetCard.style.display === 'none') {
-    const allFilterBtn = document.querySelector('.filter-btn');
-    filterStatus('all', allFilterBtn);
+    resetAllFilters();
   }
 
   targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
   targetCard.classList.remove('is-pinged');
-  void targetCard.offsetWidth; // Trigger reflow agar animasi ulang berjalan
+  void targetCard.offsetWidth;
   targetCard.classList.add('is-pinged');
 }
 

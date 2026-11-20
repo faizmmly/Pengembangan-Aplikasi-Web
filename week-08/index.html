@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Week 08 - React Routing, State Management &amp; Data Fetching</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <main class="container">
       <nav class="breadcrumb">
         <a href="../index.html">← Kembali ke Tracking Tugas</a>
-        <span class="status-badge">Selesai</span>
+        <div class="nav-right-group">
+          <button type="button" id="themeToggleBtn" class="theme-mini-btn" aria-label="Ganti Tema">
+            ☀️ Light
+          </button>
+          <span class="status-badge">Selesai</span>
+        </div>
       </nav>
 
       <header class="page-header">
@@ -20,39 +25,134 @@
         </p>
       </header>
 
+      <!-- 4 Menu Utama -->
       <div class="menu-grid">
-        <!-- 1. Buka Aplikasi React -->
         <a href="https://katalog-produk-gamma.vercel.app/" target="_blank" rel="noopener noreferrer" class="menu-card">
           <div class="icon">🌐</div>
           <h3>Buka Aplikasi</h3>
           <p>Aplikasi React TokoKita yang berjalan secara online dan interaktif di Vercel.</p>
         </a>
 
-        <!-- 2. Source Code GitHub -->
         <a href="https://github.com/faizmmly/katalog-produk" target="_blank" rel="noopener noreferrer" class="menu-card">
           <div class="icon">💻</div>
           <h3>Source Code</h3>
           <p>Repository GitHub lengkap dengan arsitektur modular dan riwayat commit.</p>
         </a>
 
-        <!-- 3. Screenshot Tampilan -->
         <a href="tampilan-app.html" class="menu-card">
           <div class="icon">📸</div>
           <h3>Screenshot Aplikasi</h3>
-          <p>Dokumentasi tangkapan layar halaman utama, detail produk, dan fitur checkout.</p>
+          <p>Galeri tangkapan layar halaman utama, detail produk, dan fitur checkout dengan lightbox.</p>
         </a>
 
-        <!-- 4. Penjelasan Arsitektur React -->
         <a href="penjelasan.html" class="menu-card">
           <div class="icon">📖</div>
           <h3>Penjelasan Arsitektur</h3>
-          <p>Penjelasan detail mengenai Routing, State Management, API, Custom Hooks, dan struktur folder.</p>
+          <p>Penjelasan bertab mengenai Routing, State Management, API, Custom Hooks, dan struktur folder.</p>
         </a>
       </div>
+
+      <!-- Coba Fitur Langsung (Deep Links) -->
+      <section class="panel-box">
+        <div class="panel-header">
+          <h2>⚡ Coba Fitur Langsung (Live Rute Aplikasi)</h2>
+          <p>Uji coba langsung rute dinamis, state global, dan konfigurasi SPA Vercel tanpa 404:</p>
+        </div>
+        <div class="quick-links-row">
+          <a href="https://katalog-produk-gamma.vercel.app/produk" target="_blank" rel="noopener noreferrer" class="chip-link">
+            🔍 Katalog &amp; Filter Produk
+          </a>
+          <a href="https://katalog-produk-gamma.vercel.app/produk/80" target="_blank" rel="noopener noreferrer" class="chip-link">
+            📦 Dynamic Route (/produk/80)
+          </a>
+          <a href="https://katalog-produk-gamma.vercel.app/favorit" target="_blank" rel="noopener noreferrer" class="chip-link">
+            ❤️ Halaman Favorit
+          </a>
+          <a href="https://katalog-produk-gamma.vercel.app/keranjang" target="_blank" rel="noopener noreferrer" class="chip-link">
+            🛒 Keranjang &amp; Checkout
+          </a>
+        </div>
+      </section>
+
+      <!-- Checklist Verifikasi Syarat Tugas 8 -->
+      <section class="panel-box">
+        <div class="panel-header">
+          <h2>✅ Checklist Pemenuhan Syarat Tugas 8</h2>
+          <p>Ringkasan verifikasi seluruh kriteria praktikum pada aplikasi TokoKita:</p>
+        </div>
+        <ul class="checklist-grid">
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Routing Lengkap</strong>
+              <span>Minimal 3 halaman, dynamic route (<code>/produk/:id</code>), dan nested layout route.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>4 Jenis State Management</strong>
+              <span>Context API (Keranjang &amp; Favorit), URL Search Params, Server State (API), dan Form State.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Data Fetching &amp; UI States</strong>
+              <span>Integrasi DummyJSON API dengan penanganan Loading Skeleton, Error State, dan Empty State.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Fitur Interaktif Lengkap</strong>
+              <span>Pencarian, filter kategori, sorting harga/rating, pagination, serta form ulasan bervalidasi.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Arsitektur Modular &amp; Custom Hook</strong>
+              <span>Komponen reusable terpisah, custom hook (<code>useDebounce</code> / <code>useFetch</code>), dan struktur folder rapi.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Deploy SPA Tanpa 404</strong>
+              <span>Konfigurasi <code>vercel.json</code> aktif sehingga refresh langsung di sub-rute berjalan normal.</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Navigasi Antar Minggu -->
+      <nav class="week-nav">
+        <a href="../week-07/" class="week-nav-btn">← Week 07: AgendaKu</a>
+        <a href="../index.html" class="week-nav-btn">Daftar Semua Modul</a>
+      </nav>
 
       <footer class="page-footer">
         <p>Faiz Muhammad Ilham Hariry • 1247050032 • IF A 24 • Pengembangan Aplikasi Web</p>
       </footer>
     </main>
+
+    <script>
+      (function () {
+        const btn = document.getElementById('themeToggleBtn');
+        const applyTheme = (isLight) => {
+          document.body.classList.toggle('light-mode', isLight);
+          if (btn) btn.textContent = isLight ? '🌙 Dark' : '☀️ Light';
+        };
+        applyTheme(localStorage.getItem('theme') === 'light');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            const nextLight = !document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', nextLight ? 'light' : 'dark');
+            applyTheme(nextLight);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

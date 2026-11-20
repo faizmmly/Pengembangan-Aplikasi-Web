@@ -4,53 +4,155 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Week 07 - Component-Based UI Development with React</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <main class="container">
       <nav class="breadcrumb">
         <a href="../index.html">← Kembali ke Tracking Tugas</a>
-        <span class="status-badge">Selesai</span>
+        <div class="nav-right-group">
+          <button type="button" id="themeToggleBtn" class="theme-mini-btn" aria-label="Ganti Tema">
+            ☀️ Light
+          </button>
+          <span class="status-badge">Selesai</span>
+        </div>
       </nav>
 
       <header class="page-header">
         <h1>Week 07: Component-Based UI Development with React</h1>
-        <p>Aplikasi AgendaKu (Daftar Kegiatan & Tugas Kuliah) yang dibangun menggunakan React, Vite, dan TypeScript.</p>
+        <p>
+          Aplikasi <strong>AgendaKu</strong> (Daftar Kegiatan &amp; Tugas Kuliah) yang dibangun menggunakan React, Vite, dan TypeScript dengan arsitektur komponen modular.
+        </p>
       </header>
 
+      <!-- 4 Menu Utama -->
       <div class="menu-grid">
-        <!-- 1. Buka Aplikasi React -->
-        <a href="https://aplikasi-daftar-kegiatan.vercel.app/" target="_blank" class="menu-card">
+        <a href="https://aplikasi-daftar-kegiatan.vercel.app/" target="_blank" rel="noopener noreferrer" class="menu-card">
           <div class="icon">🌐</div>
           <h3>Buka Aplikasi</h3>
-          <p>Aplikasi React AgendaKu yang berjalan secara online dan interaktif.</p>
+          <p>Aplikasi React AgendaKu yang berjalan secara online dan interaktif di Vercel.</p>
         </a>
 
-        <!-- 2. Source Code GitHub -->
-        <a href="https://github.com/faizmmly/Aplikasi-Daftar-Kegiatan" target="_blank" class="menu-card">
+        <a href="https://github.com/faizmmly/Aplikasi-Daftar-Kegiatan" target="_blank" rel="noopener noreferrer" class="menu-card">
           <div class="icon">💻</div>
           <h3>Source Code</h3>
           <p>Repository GitHub lengkap dengan struktur komponen modular dan riwayat commit.</p>
         </a>
 
-        <!-- 3. Screenshot Tampilan -->
         <a href="tampilan-app.html" class="menu-card">
           <div class="icon">📸</div>
           <h3>Screenshot Aplikasi</h3>
-          <p>Dokumentasi tangkapan layar tampilan antarmuka dan fitur interaktif.</p>
+          <p>Galeri tangkapan layar tampilan antarmuka, tampilan kalender, dan fitur interaktif.</p>
         </a>
 
-        <!-- 4. Penjelasan Konsep React -->
         <a href="penjelasan.html" class="menu-card">
           <div class="icon">📖</div>
           <h3>Penjelasan Komponen</h3>
-          <p>Penjelasan detail mengenai penggunaan Components, Props, State, dan Event Handling.</p>
+          <p>Penjelasan bertab mengenai pemecahan Components, Props, State, dan Event Handling.</p>
         </a>
       </div>
+
+      <!-- Coba Fitur Langsung -->
+      <section class="panel-box">
+        <div class="panel-header">
+          <h2>⚡ Fitur Utama yang Dapat Diuji Langsung</h2>
+          <p>Klik salah satu tombol di bawah untuk langsung membuka fitur terkait di aplikasi AgendaKu:</p>
+        </div>
+        <div class="quick-links-row">
+          <a href="https://aplikasi-daftar-kegiatan.vercel.app/?action=tambah" target="_blank" rel="noopener noreferrer" class="chip-link">
+            ➕ Tambah &amp; Edit Kegiatan
+          </a>
+          <a href="https://aplikasi-daftar-kegiatan.vercel.app/?action=cari" target="_blank" rel="noopener noreferrer" class="chip-link">
+            🔍 Cari &amp; Filter Kegiatan
+          </a>
+          <a href="https://aplikasi-daftar-kegiatan.vercel.app/?view=kalender" target="_blank" rel="noopener noreferrer" class="chip-link">
+            📅 Mode Tampilan Kalender
+          </a>
+          <a href="https://aplikasi-daftar-kegiatan.vercel.app/?theme=dark" target="_blank" rel="noopener noreferrer" class="chip-link">
+            🌓 Dark / Light Theme
+          </a>
+        </div>
+      </section>
+
+      <!-- Checklist Verifikasi Syarat Tugas 7 -->
+      <section class="panel-box">
+        <div class="panel-header">
+          <h2>✅ Checklist Pemenuhan Syarat Tugas 7</h2>
+          <p>Ringkasan verifikasi seluruh kriteria praktikum pada aplikasi AgendaKu:</p>
+        </div>
+        <ul class="checklist-grid">
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Minimal 5 Komponen Terpisah</strong>
+              <span>Dipecah menjadi komponen modular (Header, StatsCards, FilterBar, ActivityCard, ModalForm, CalendarView).</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Props, State &amp; Event Handling</strong>
+              <span>Komunikasi data parent-child via props bertipe TypeScript, <code>useState</code>, dan handler form/klik.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Conditional Rendering &amp; List Key</strong>
+              <span>Rendering dinamis status kegiatan, empty state, modal, serta <code>.map()</code> dengan atribut <code>key</code> unik.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Fitur Interaktif Lengkap</strong>
+              <span>CRUD kegiatan (Tambah, Detail, Edit, Hapus), ubah status cepat, pencarian, filter jenis, dan sorting tanggal.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Identitas Mahasiswa Tampil</strong>
+              <span>Nama lengkap (<strong>Faiz Muhammad Ilham Hariry</strong>), NIM (<strong>1247050032</strong>), dan kelas tampil di header.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Deploy Online &amp; Git History</strong>
+              <span>Ter-deploy di Vercel dengan riwayat commit terstruktur di repositori GitHub.</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Navigasi Antar Minggu -->
+      <nav class="week-nav">
+        <a href="../week-06/" class="week-nav-btn">← Week 06: Pengelola Tugas</a>
+        <a href="../week-08/" class="week-nav-btn">Week 08: TokoKita →</a>
+      </nav>
 
       <footer class="page-footer">
         <p>Faiz Muhammad Ilham Hariry • 1247050032 • IF A 24 • Pengembangan Aplikasi Web</p>
       </footer>
     </main>
+
+    <script>
+      (function () {
+        const btn = document.getElementById('themeToggleBtn');
+        const applyTheme = (isLight) => {
+          document.body.classList.toggle('light-mode', isLight);
+          if (btn) btn.textContent = isLight ? '🌙 Dark' : '☀️ Light';
+        };
+        applyTheme(localStorage.getItem('theme') === 'light');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            const nextLight = !document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', nextLight ? 'light' : 'dark');
+            applyTheme(nextLight);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

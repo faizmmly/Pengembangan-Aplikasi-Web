@@ -1,10 +1,38 @@
+/* ==========================================================================
+   Design Tokens — Sky Blue & Ocean Slate (Dark Default & Light Mode)
+   ========================================================================== */
 :root {
-  --bg-main: #0f172a;
-  --bg-card: #1e293b;
-  --primary: #38bdf8;
-  --text-main: #f8fafc;
+  --bg-main: #0b1324;
+  --bg-card: #121e36;
+  --bg-subtle: rgba(15, 23, 42, 0.55);
+  --primary: #1d8cf8;
+  --primary-soft: rgba(29, 140, 248, 0.14);
+  --primary-border: rgba(56, 189, 248, 0.3);
+  --accent-sky: #38bdf8;
+  --text-main: #f1f5f9;
   --text-muted: #94a3b8;
-  --border: #334155;
+  --border: rgba(148, 163, 184, 0.16);
+  --badge-bg: rgba(16, 185, 129, 0.16);
+  --badge-text: #34d399;
+  --badge-border: rgba(52, 211, 153, 0.28);
+  --shadow-card: 0 10px 28px rgba(2, 6, 23, 0.32);
+}
+
+body.light-mode {
+  --bg-main: #f4f8fc;
+  --bg-card: #ffffff;
+  --bg-subtle: #f8fafc;
+  --primary: #1d8cf8;
+  --primary-soft: #e8f3ff;
+  --primary-border: #bae6fd;
+  --accent-sky: #0284c7;
+  --text-main: #182230;
+  --text-muted: #526277;
+  --border: #e2ecf5;
+  --badge-bg: #dcfce7;
+  --badge-text: #15803d;
+  --badge-border: #bbf7d0;
+  --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 
 * {
@@ -18,74 +46,133 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   line-height: 1.6;
-  padding: 40px 20px;
+  padding: 36px 20px 48px;
   display: flex;
   justify-content: center;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .container {
   width: 100%;
-  max-width: 900px;
+  max-width: 920px;
 }
 
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85em;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--primary-soft);
+  color: var(--accent-sky);
+}
+
+/* ==========================================================================
+   Breadcrumb & Top Controls
+   ========================================================================== */
 .breadcrumb {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 .breadcrumb a {
-  color: var(--primary);
+  color: var(--accent-sky);
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .breadcrumb a:hover {
   text-decoration: underline;
 }
 
-.status-badge {
-  background: #064e3b;
-  color: #34d399;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
+.nav-right-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+.theme-mini-btn {
+  background: var(--primary-soft);
+  color: var(--accent-sky);
+  border: 1px solid var(--primary-border);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-mini-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.status-badge {
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid var(--badge-border);
+  padding: 4px 13px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* ==========================================================================
+   Page Header
+   ========================================================================== */
 .page-header {
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
 .page-header h1 {
-  font-size: 1.75rem;
+  font-size: clamp(1.45rem, 2.8vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin-bottom: 8px;
   color: var(--text-main);
 }
 
 .page-header p {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.96rem;
+  max-width: 720px;
 }
 
-/* Grid Menu Utama */
+/* ==========================================================================
+   Grid 4 Menu Utama (2x2 di Desktop, 1 Kolom di Mobile)
+   ========================================================================== */
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 640px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .menu-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: 14px;
+  padding: 22px 24px;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s, border-color 0.2s;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
 }
@@ -96,58 +183,377 @@ body {
 }
 
 .menu-card .icon {
-  font-size: 1.75rem;
-  margin-bottom: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  margin-bottom: 14px;
 }
 
 .menu-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.08rem;
+  font-weight: 700;
   margin-bottom: 6px;
   color: var(--text-main);
 }
 
 .menu-card p {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   color: var(--text-muted);
+  line-height: 1.5;
 }
 
-/* Konten Penjelasan & Screenshot */
-.content-card {
+/* ==========================================================================
+   Panel Box (Quick Deep Links & Checklist Verifikasi)
+   ========================================================================== */
+.panel-box {
+  margin-top: 22px;
+  padding: 24px;
+  border-radius: 14px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 28px;
-  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
 }
 
-.content-card h2 {
-  font-size: 1.25rem;
-  color: var(--primary);
-  margin-bottom: 12px;
+.panel-header h2 {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
 }
 
-.content-card p, .content-card li {
-  font-size: 0.925rem;
+.panel-header p {
+  font-size: 0.88rem;
   color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.quick-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--primary-soft);
+  color: var(--accent-sky);
+  border: 1px solid var(--primary-border);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.chip-link:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Checklist Grid */
+.checklist-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.checklist-grid li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px 14px;
+  border-radius: 11px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+}
+
+.check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid var(--badge-border);
+  font-size: 0.76rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checklist-grid li div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.checklist-grid li strong {
+  font-size: 0.92rem;
+  color: var(--text-main);
+}
+
+.checklist-grid li span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   Galeri Screenshot & Lightbox Modal
+   ========================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.gallery-card {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  cursor: zoom-in;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 205px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--border);
+}
+
+.gallery-card figcaption {
+  padding: 15px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gallery-card figcaption strong {
+  font-size: 0.96rem;
+  color: var(--text-main);
+}
+
+.gallery-card figcaption span {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lb-content {
+  max-width: 920px;
+  width: 100%;
+  text-align: center;
+}
+
+.lb-content img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+}
+
+.lb-content p {
+  margin-top: 12px;
+  color: #f8fafc;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.lb-close,
+.lb-nav {
+  position: fixed;
+  background: rgba(30, 41, 59, 0.85);
+  color: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.lb-close:hover,
+.lb-nav:hover {
+  background: var(--primary);
+}
+
+.lb-close { top: 20px; right: 20px; }
+.lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+/* ==========================================================================
+   Tabs Interaktif & Konten Penjelasan
+   ========================================================================== */
+.tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  border-color: var(--primary);
+  color: var(--text-main);
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.tab-panel,
+.content-card {
+  display: none;
+  padding: 24px 26px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 18px;
+}
+
+.tab-panel.active,
+.content-card {
+  display: block;
+}
+
+.tab-panel h2,
+.content-card h2 {
+  font-size: 1.2rem;
+  color: var(--accent-sky);
   margin-bottom: 10px;
 }
 
+.tab-panel p,
+.content-card p {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.tech-list,
 .content-card ul {
   padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
 }
 
-.img-container {
-  margin-top: 14px;
+.tech-list li,
+.content-card li {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.tech-list strong,
+.content-card strong {
+  color: var(--text-main);
+}
+
+.code-block {
+  background: #080f1e;
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 16px 18px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  margin-top: 12px;
+}
+
+/* ==========================================================================
+   Navigasi Antar Minggu & Footer
+   ========================================================================== */
+.week-nav {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.week-nav-btn {
+  padding: 11px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  background: var(--bg-card);
+  color: var(--text-main);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.img-container img {
-  width: 100%;
-  height: auto;
-  display: block;
+.week-nav-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
 }
 
 .page-footer {
@@ -156,5 +562,15 @@ body {
   color: var(--text-muted);
   border-top: 1px solid var(--border);
   padding-top: 20px;
-  margin-top: 40px;
+  margin-top: 36px;
+}
+
+@media (max-width: 520px) {
+  .week-nav {
+    flex-direction: column;
+  }
+
+  .week-nav-btn {
+    width: 100%;
+  }
 }

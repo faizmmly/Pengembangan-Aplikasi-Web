@@ -3,82 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Penjelasan Arsitektur React - Week 08</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Penjelasan Arsitektur - TokoKita (Week 08)</title>
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <main class="container">
       <nav class="breadcrumb">
-        <a href="index.html">← Kembali ke Menu Week 08</a>
-        <span class="status-badge">Dokumentasi</span>
+        <a href="index.html">← Kembali ke Week 08</a>
+        <span class="status-badge">Dokumentasi Teknis</span>
       </nav>
 
       <header class="page-header">
-        <h1>Penjelasan Arsitektur &amp; Implementasi React</h1>
-        <p>Detail penerapan React Routing, State Management, Data Fetching, Custom Hooks, dan struktur folder pada aplikasi <strong>TokoKita</strong>.</p>
+        <h1>Penjelasan Arsitektur TokoKita</h1>
+        <p>Pilih tab topik di bawah untuk melihat implementasi teknis React Router, State Management, API Fetching, dan struktur folder proyek.</p>
       </header>
 
-      <section class="content-card">
-        <h2>1. Routing dan Navigasi (React Router)</h2>
-        <p>Aplikasi menerapkan <em>client-side routing</em> menggunakan <code>react-router-dom</code> sehingga perpindahan antarhalaman berjalan mulus tanpa memuat ulang halaman penuh (<em>full page reload</em>):</p>
-        <ul>
-          <li><strong>Nested Route:</strong> Seluruh halaman utama dibungkus di dalam layout induk <code>MainLayout</code> menggunakan komponen <code>&lt;Outlet /&gt;</code> agar navbar, footer, notifikasi toast, dan tombol kembali ke atas tetap konsisten.</li>
-          <li><strong>Dynamic Route:</strong> Rute <code>/produk/:id</code> membaca parameter ID produk dari URL melalui <code>useParams()</code> untuk menampilkan rincian tiap produk.</li>
-          <li><strong>Halaman Lengkap:</strong> Terdiri dari 7 rute utama, yaitu Beranda (<code>/</code>), Katalog Produk (<code>/produk</code>), Detail Produk (<code>/produk/:id</code>), Favorit (<code>/favorit</code>), Keranjang (<code>/keranjang</code>), Tentang (<code>/tentang</code>), dan halaman fallback 404 (<code>*</code>).</li>
+      <!-- Tab Buttons -->
+      <div class="tabs-bar" role="tablist">
+        <button type="button" class="tab-btn active" data-tab="tab-routing">1. React Routing</button>
+        <button type="button" class="tab-btn" data-tab="tab-state">2. State Management</button>
+        <button type="button" class="tab-btn" data-tab="tab-api">3. API &amp; Custom Hook</button>
+        <button type="button" class="tab-btn" data-tab="tab-folder">4. Struktur Folder</button>
+      </div>
+
+      <!-- Tab Panels -->
+      <section id="tab-routing" class="tab-panel active">
+        <h2>Implementasi React Router (SPA Navigation)</h2>
+        <p>Aplikasi menggunakan <code>react-router-dom</code> dengan pembagian rute terstruktur untuk navigasi tanpa muat ulang halaman:</p>
+        <ul class="tech-list">
+          <li><strong>Nested Layout Route:</strong> Membungkus halaman utama dengan komponen layout (Navbar &amp; Footer persisten) menggunakan <code>&lt;Outlet /&gt;</code>.</li>
+          <li><strong>Halaman Statis Utama:</strong> Rute <code>/</code> (Beranda), <code>/produk</code> (Katalog), <code>/favorit</code>, <code>/keranjang</code>, dan <code>/tentang</code>.</li>
+          <li><strong>Dynamic Route:</strong> Rute <code>/produk/:id</code> membaca parameter ID produk melalui hook <code>useParams()</code> untuk mengambil detail produk spesifik.</li>
+          <li><strong>Fallback &amp; Vercel Rewrite:</strong> Rute wildcard <code>*</code> menangani halaman tidak ditemukan, serta file <code>vercel.json</code> mengarahkan semua request ke <code>index.html</code> agar refresh langsung tidak menghasilkan error 404.</li>
         </ul>
       </section>
 
-      <section class="content-card">
-        <h2>2. State Management &amp; Context API</h2>
-        <p>Pengelolaan state dibagi berdasarkan cakupan dan fungsinya untuk menjaga pemisahan logika yang bersih:</p>
-        <ul>
-          <li><strong>Global State (Context API):</strong> Menggunakan <code>CartContext</code> untuk mengelola isi keranjang belanja, <code>FavoritesContext</code> untuk daftar produk favorit, serta <code>ThemeContext</code> untuk pengaturan tema gelap dan terang yang tersimpan otomatis ke <code>localStorage</code>.</li>
-          <li><strong>URL State:</strong> Parameter pencarian (<code>q</code>), filter kategori, pengurutan (<code>sort</code>), dan nomor halaman (<code>page</code>) disinkronkan langsung dengan URL menggunakan <code>useSearchParams()</code>.</li>
-          <li><strong>Server State:</strong> Data katalog, kategori, dan detail produk dari API dikelola dengan status siklus hidup <em>loading</em>, <em>success</em>, dan <em>error</em>.</li>
-          <li><strong>Local &amp; Form State:</strong> Mengatur galeri foto produk, modal checkout, notifikasi toast, serta input terkontrol (<em>controlled components</em>) dengan validasi pada formulir ulasan produk dan formulir checkout.</li>
+      <section id="tab-state" class="tab-panel">
+        <h2>Empat Lapisan State Management</h2>
+        <p>Pengelolaan state dipisahkan sesuai cakupan datanya agar tetap bersih dan mudah dirawat:</p>
+        <ul class="tech-list">
+          <li><strong>Global State (Context API):</strong> <code>CartContext</code> dan <code>FavoriteContext</code> menyimpan item keranjang, jumlah kuantitas, dan daftar favorit yang otomatis tersimpan ke <code>localStorage</code>.</li>
+          <li><strong>URL State (<code>useSearchParams</code>):</strong> Kata kunci pencarian, filter kategori, urutan harga/rating, dan nomor halaman disimpan di query URL sehingga tautan hasil pencarian dapat dibagikan.</li>
+          <li><strong>Server State:</strong> Menyimpan respons data produk, status <code>isLoading</code>, serta pesan <code>error</code> saat mengambil data dari API.</li>
+          <li><strong>Form State:</strong> Mengelola input nama, rating bintang, dan komentar pada fitur ulasan produk lengkap dengan validasi panjang karakter sebelum dikirim.</li>
         </ul>
       </section>
 
-      <section class="content-card">
-        <h2>3. Data Fetching &amp; API Service</h2>
-        <p>Seluruh pemanggilan data eksternal dipisahkan ke dalam lapisan layanan <code>src/services/productService.ts</code> menggunakan <code>fetch</code> API yang terhubung ke <strong>DummyJSON Products API</strong>:</p>
-        <ul>
-          <li><strong>Caching &amp; Pembatalan Request:</strong> Mendukung <code>AbortController</code> untuk mencegah <em>race condition</em> saat pengguna mengetik pencarian dengan cepat serta caching respons di memori.</li>
-          <li><strong>Penanganan Kondisi UI:</strong> Dilengkapi komponen status <code>LoadingSpinner</code> / skeleton saat mengambil data, <code>ErrorMessage</code> dengan tombol coba lagi saat jaringan gagal, dan <code>EmptyState</code> ketika hasil pencarian kosong.</li>
+      <section id="tab-api" class="tab-panel">
+        <h2>Data Fetching, Error Handling &amp; Custom Hooks</h2>
+        <p>Data produk diambil secara asinkron dari REST API publik (<strong>DummyJSON Products API</strong>) melalui lapisan service terpisah:</p>
+        <ul class="tech-list">
+          <li><strong>Service Layer (<code>services/productService.ts</code>):</strong> Memusatkan pemanggilan <code>fetch()</code> untuk daftar produk, pencarian, kategori, dan detail produk.</li>
+          <li><strong>Custom Hook:</strong> Mengenkapsulasi logika pencarian tertunda (<em>debouncing</em>) dan siklus pengambilan data asinkron agar komponen UI tetap fokus pada tampilan.</li>
+          <li><strong>Resilient UI States:</strong> Menampilkan <em>skeleton loader</em> saat memuat, tampilan <em>error state</em> lengkap dengan tombol coba lagi saat jaringan offline, serta <em>empty state</em> jika filter tidak menemukan hasil.</li>
         </ul>
       </section>
 
-      <section class="content-card">
-        <h2>4. Custom Hooks &amp; Reusable Components</h2>
-        <p><strong>Custom Hooks (<code>src/hooks/</code>):</strong></p>
-        <ul>
-          <li><code>useFetch</code>: Hook generik untuk mengambil data asinkron lengkap dengan state loading, error, dan fungsi <code>refetch</code>.</li>
-          <li><code>useCart</code>, <code>useFavorites</code>, &amp; <code>useTheme</code>: Hook konsumen Context API untuk akses state global yang aman.</li>
-          <li><code>useLocalStorage</code>, <code>useDocumentTitle</code>, &amp; <code>useSearchShortcut</code>: Hook utilitas untuk persistensi penyimpanan browser, judul tab dinamis, dan pintasan keyboard.</li>
-        </ul>
-        <p style="margin-top: 12px;"><strong>Reusable Components (<code>src/components/</code>):</strong></p>
-        <ul>
-          <li><code>ProductCard</code>, <code>FavoriteButton</code>, <code>ReviewSection</code>, <code>RelatedProducts</code>, <code>UIStates</code>, <code>ToastContainer</code>, dan <code>BackToTop</code>.</li>
-        </ul>
+      <section id="tab-folder" class="tab-panel">
+        <h2>Struktur Folder Modular</h2>
+        <p>Kode sumber disusun berdasarkan pemisahan tanggung jawab (<em>Separation of Concerns</em>):</p>
+        <pre class="code-block">src/
+├── components/   # Komponen UI reusable (Navbar, ProductCard, Skeleton, Pagination)
+├── context/      # CartContext &amp; FavoriteContext (Global State + localStorage)
+├── hooks/        # Custom hooks (useDebounce, useProducts)
+├── pages/        # Halaman rute (Home, Products, ProductDetail, Favorites, Cart, About)
+├── services/     # Fungsi fetch API dan penanganan error HTTP
+├── types/        # Definisi interface TypeScript (Product, CartItem, Review)
+└── App.tsx       # Konfigurasi BrowserRouter dan Routes</pre>
       </section>
 
-      <section class="content-card">
-        <h2>5. Struktur Folder (Separation of Concerns)</h2>
-        <p>Kode diorganisasi berdasarkan tanggung jawab masing-masing lapisan arsitektur:</p>
-        <pre>src/
-├── components/   # Komponen UI reusable (ProductCard, UIStates, ReviewSection, dll.)
-├── context/      # Global state menggunakan Context API (Cart, Favorites, Theme)
-├── hooks/        # Custom hooks (useFetch, useCart, useLocalStorage, dll.)
-├── layouts/      # Kerangka tata letak utama (MainLayout)
-├── pages/        # Halaman rute aplikasi (Home, Products, ProductDetail, Cart, dll.)
-├── services/     # Modul akses public API (productService.ts)
-├── types/        # Definisi tipe data TypeScript (product.ts)
-└── utils/        # Fungsi pembantu format harga dan notifikasi toast</pre>
-      </section>
+      <nav class="week-nav">
+        <a href="tampilan-app.html" class="week-nav-btn">← Screenshot Aplikasi</a>
+        <a href="index.html" class="week-nav-btn">Menu Week 08 →</a>
+      </nav>
 
       <footer class="page-footer">
         <p>Faiz Muhammad Ilham Hariry • 1247050032 • IF A 24 • Pengembangan Aplikasi Web</p>
       </footer>
     </main>
+
+    <script>
+      (function () {
+        if (localStorage.getItem('theme') === 'light') {
+          document.body.classList.add('light-mode');
+        }
+
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-tab');
+            tabBtns.forEach((b) => b.classList.remove('active'));
+            tabPanels.forEach((p) => p.classList.remove('active'));
+            btn.classList.add('active');
+            const targetPanel = document.getElementById(targetId);
+            if (targetPanel) targetPanel.classList.add('active');
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

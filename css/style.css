@@ -152,6 +152,7 @@ input:focus-visible {
   border: 1px solid rgba(56, 189, 248, 0.25);
   display: grid;
   place-items: center;
+  color: var(--accent-blue)
 }
 
 .logo-text {
@@ -1217,6 +1218,12 @@ input:focus-visible {
 .card .card-actions .btn-primary { flex: 1 1 150px; width: auto !important; }
 .card .card-actions a.btn-secondary,
 .card .card-actions button.btn-secondary { flex: 0 0 auto; width: auto !important; }
+
+/* Tombol aksi: utama memanjang, sekunder menyesuaikan, selalu satu baris */
+.card .card-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.card .card-actions > :only-child { grid-column: 1 / -1; }
+.card .card-actions .btn-primary,
+.card .card-actions .btn-secondary { width: auto !important; }
 
 /* Kartu mendatang: ringkas dan redup */
 .card.placeholder-card { min-height: unset; align-self: start; padding: 16px 20px; }

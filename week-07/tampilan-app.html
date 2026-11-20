@@ -4,40 +4,121 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bukti Screenshot Aplikasi - Week 07</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <main class="container">
       <nav class="breadcrumb">
         <a href="index.html">← Kembali ke Menu Week 07</a>
-        <span class="status-badge">Bukti UI</span>
+        <div class="nav-right-group">
+          <button type="button" id="themeToggleBtn" class="theme-mini-btn" aria-label="Ganti Tema">
+            ☀️ Light
+          </button>
+          <span class="status-badge">Bukti UI</span>
+        </div>
       </nav>
 
       <header class="page-header">
         <h1>Screenshot Tampilan Aplikasi AgendaKu</h1>
-        <p>Dokumentasi tangkapan layar antarmuka pengguna (UI/UX) dan fitur interaktif React.</p>
+        <p>Dokumentasi tangkapan layar antarmuka pengguna (UI/UX) dan fitur interaktif React. Klik gambar untuk memperbesar (Lightbox).</p>
       </header>
 
-      <section class="content-card">
-        <h2>Tampilan Utama Dashboard AgendaKu</h2>
-        <p>Menunjukkan kartu statistik, informasi profil mahasiswa (Nama & NIM), kolom pencarian, filter, dan kartu daftar kegiatan yang responsif.</p>
-        <div class="img-container">
-          <!-- Letakkan file gambar screenshot di folder week-07/img/ lalu ubah nama file di bawah -->
-          <img src="img/screenshot-dashboard.png" alt="Dashboard AgendaKu React" />
-        </div>
-      </section>
+      <div class="gallery-grid">
+        <figure class="gallery-card" data-index="0">
+          <img src="img/screenshot-dashboard.png" alt="Dashboard AgendaKu React" loading="lazy" />
+          <figcaption>
+            <strong>1. Tampilan Utama Dashboard AgendaKu</strong>
+            <span>Menunjukkan kartu statistik, informasi profil mahasiswa (Nama &amp; NIM), kolom pencarian, filter, dan kartu daftar kegiatan yang responsif.</span>
+          </figcaption>
+        </figure>
 
-      <section class="content-card">
-        <h2>Tampilan Fitur Kalender Interaktif</h2>
-        <p>Menunjukkan fitur navigasi kalender harian untuk memantau jadwal kegiatan berdasarkan tanggal yang dipilih.</p>
-        <div class="img-container">
-          <img src="img/screenshot-kalender.png" alt="Kalender AgendaKu React" />
-        </div>
-      </section>
+        <figure class="gallery-card" data-index="1">
+          <img src="img/screenshot-kalender.png" alt="Kalender AgendaKu React" loading="lazy" />
+          <figcaption>
+            <strong>2. Tampilan Fitur Kalender Interaktif</strong>
+            <span>Menunjukkan fitur navigasi kalender harian untuk memantau jadwal kegiatan berdasarkan tanggal yang dipilih.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <nav class="week-nav">
+        <a href="index.html" class="week-nav-btn">← Menu Week 07</a>
+        <a href="penjelasan.html" class="week-nav-btn">Penjelasan Komponen →</a>
+      </nav>
 
       <footer class="page-footer">
         <p>Faiz Muhammad Ilham Hariry • 1247050032 • IF A 24 • Pengembangan Aplikasi Web</p>
       </footer>
     </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button type="button" class="lb-close" id="lbClose" aria-label="Tutup">✕</button>
+      <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Sebelumnya">‹</button>
+      <div class="lb-content">
+        <img id="lbImg" src="" alt="" />
+        <p id="lbCaption"></p>
+      </div>
+      <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Berikutnya">›</button>
+    </div>
+
+    <script>
+      (function () {
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const applyTheme = (isLight) => {
+          document.body.classList.toggle('light-mode', isLight);
+          if (themeBtn) themeBtn.textContent = isLight ? '🌙 Dark' : '☀️ Light';
+        };
+        applyTheme(localStorage.getItem('theme') === 'light');
+        if (themeBtn) {
+          themeBtn.addEventListener('click', () => {
+            const nextLight = !document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', nextLight ? 'light' : 'dark');
+            applyTheme(nextLight);
+          });
+        }
+
+        const cards = Array.from(document.querySelectorAll('.gallery-card'));
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbCaption = document.getElementById('lbCaption');
+        let currentIdx = 0;
+
+        function openLightbox(index) {
+          currentIdx = (index + cards.length) % cards.length;
+          const img = cards[currentIdx].querySelector('img');
+          const title = cards[currentIdx].querySelector('strong').textContent;
+          lbImg.src = img.src;
+          lbImg.alt = img.alt;
+          lbCaption.textContent = title;
+          lightbox.classList.add('open');
+          lightbox.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('open');
+          lightbox.setAttribute('aria-hidden', 'true');
+        }
+
+        cards.forEach((card, idx) => {
+          card.addEventListener('click', () => openLightbox(idx));
+        });
+
+        document.getElementById('lbClose').addEventListener('click', closeLightbox);
+        document.getElementById('lbPrev').addEventListener('click', () => openLightbox(currentIdx - 1));
+        document.getElementById('lbNext').addEventListener('click', () => openLightbox(currentIdx + 1));
+
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox.classList.contains('open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') openLightbox(currentIdx - 1);
+          if (e.key === 'ArrowRight') openLightbox(currentIdx + 1);
+        });
+      })();
+    </script>
   </body>
 </html>

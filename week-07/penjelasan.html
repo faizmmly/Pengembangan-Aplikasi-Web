@@ -4,24 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Penjelasan Konsep React - Week 07</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <main class="container">
       <nav class="breadcrumb">
         <a href="index.html">← Kembali ke Menu Week 07</a>
-        <span class="status-badge">Dokumentasi</span>
+        <div class="nav-right-group">
+          <button type="button" id="themeToggleBtn" class="theme-mini-btn" aria-label="Ganti Tema">
+            ☀️ Light
+          </button>
+          <span class="status-badge">Dokumentasi</span>
+        </div>
       </nav>
 
       <header class="page-header">
-        <h1>Penjelasan Konsep & Komponen React</h1>
-        <p>Detail implementasi Component-Based UI Development pada aplikasi AgendaKu.</p>
+        <h1>Penjelasan Konsep &amp; Komponen React</h1>
+        <p>Detail implementasi Component-Based UI Development pada aplikasi AgendaKu. Pilih tab topik di bawah untuk melihat rinciannya.</p>
       </header>
 
-      <section class="content-card">
+      <!-- Tab Buttons -->
+      <div class="tabs-bar" role="tablist">
+        <button type="button" class="tab-btn active" data-tab="tab-components">1. React Components</button>
+        <button type="button" class="tab-btn" data-tab="tab-props">2. Props (Pengiriman Data)</button>
+        <button type="button" class="tab-btn" data-tab="tab-state">3. State &amp; useState</button>
+        <button type="button" class="tab-btn" data-tab="tab-event">4. Event &amp; Rendering</button>
+      </div>
+
+      <!-- Tab 1: React Components -->
+      <section id="tab-components" class="tab-panel active">
         <h2>1. React Components (Arsitektur Komponen)</h2>
         <p>Aplikasi dipecah ke dalam beberapa komponen modular yang terpisah di dalam folder <code>src/components/</code> agar kode lebih bersih, terstruktur, dan mudah dirawat:</p>
-        <ul>
+        <ul class="tech-list">
           <li><strong>Header.tsx / Profil:</strong> Menampilkan identitas mahasiswa (Nama, NIM, kelas) secara dinamis.</li>
           <li><strong>StatsCard.tsx:</strong> Komponen kartu statistik untuk merangkum jumlah kegiatan harian dan tugas selesai.</li>
           <li><strong>TaskCard.tsx:</strong> Komponen kartu individual yang bersifat <em>reusable</em> untuk menampilkan rincian setiap kegiatan.</li>
@@ -30,31 +44,79 @@
         </ul>
       </section>
 
-      <section class="content-card">
+      <!-- Tab 2: Props -->
+      <section id="tab-props" class="tab-panel">
         <h2>2. Props (Pengiriman Data)</h2>
-        <p>Props digunakan untuk mengirimkan data dari komponen induk (<em>parent</em>, seperti <code>App.tsx</code>) ke komponen anak (<em>child</em>). Contohnya, objek data kegiatan dikirimkan ke <code>TaskCard</code> agar komponen kartu dapat merender judul, mata kuliah, dan tenggat waktu secara spesifik.</p>
+        <p>Props digunakan untuk mengirimkan data dan fungsi callback dari komponen induk (<em>parent</em>, seperti <code>App.tsx</code>) ke komponen anak (<em>child</em>):</p>
+        <ul class="tech-list">
+          <li><strong>Pengiriman Data Kegiatan:</strong> Objek data kegiatan dikirimkan ke <code>TaskCard</code> agar komponen kartu dapat merender judul, jenis/kategori, dan tenggat waktu secara spesifik.</li>
+          <li><strong>Callback Handler:</strong> Fungsi aksi seperti ubah status, edit, dan hapus diteruskan melalui props sehingga komponen anak tetap terisolasi dan mudah digunakan ulang.</li>
+          <li><strong>TypeScript Props Interface:</strong> Setiap komponen mendefinisikan tipe props secara eksplisit untuk menjaga konsistensi data antar komponen.</li>
+        </ul>
       </section>
 
-      <section class="content-card">
-        <h2>3. State & useState (Pengelolaan Data Reaktif)</h2>
+      <!-- Tab 3: State & useState -->
+      <section id="tab-state" class="tab-panel">
+        <h2>3. State &amp; useState (Pengelolaan Data Reaktif)</h2>
         <p><code>useState</code> digunakan untuk menyimpan dan mengelola data yang dapat berubah secara dinamis di dalam aplikasi, seperti:</p>
-        <ul>
-          <li>Menyimpan daftar array kegiatan (state <code>tasks</code>).</li>
+        <ul class="tech-list">
+          <li>Menyimpan daftar array kegiatan (state <code>tasks</code>) yang tersinkronisasi dengan <code>localStorage</code>.</li>
           <li>Mengelola status kategori filter yang sedang aktif (state <code>currentFilter</code>).</li>
           <li>Menangani teks pencarian kata kunci secara <em>real-time</em>.</li>
           <li>Mengontrol visibilitas modal konfirmasi dan notifikasi <em>toast</em>.</li>
         </ul>
       </section>
 
-      <section class="content-card">
-        <h2>4. Event Handling & Rendering</h2>
-        <p><strong>Event Handling:</strong> Menangani interaksi pengguna seperti klik tombol aksi (ubah status, edit, hapus), pengisian formulir, dan pengetikan teks pada kolom pencarian.</p>
-        <p><strong>List & Conditional Rendering:</strong> Menggunakan metode JavaScript <code>.map()</code> untuk merender array daftar kegiatan secara dinamis, serta menangani kondisi tampilan kosong (<em>empty state</em>) ketika data tidak ditemukan.</p>
+      <!-- Tab 4: Event Handling & Rendering -->
+      <section id="tab-event" class="tab-panel">
+        <h2>4. Event Handling &amp; Rendering</h2>
+        <ul class="tech-list">
+          <li><strong>Event Handling:</strong> Menangani interaksi pengguna seperti klik tombol aksi (ubah status, edit, hapus), pengisian formulir, dan pengetikan teks pada kolom pencarian.</li>
+          <li><strong>List Rendering (<code>.map()</code>):</strong> Menggunakan metode JavaScript <code>.map()</code> dengan atribut <code>key</code> unik untuk merender array daftar kegiatan secara dinamis.</li>
+          <li><strong>Conditional Rendering:</strong> Menampilkan modal formulir saat dibuka, mengubah tampilan lencana status secara dinamis, serta menangani kondisi tampilan kosong (<em>empty state</em>) ketika data tidak ditemukan.</li>
+        </ul>
       </section>
+
+      <nav class="week-nav">
+        <a href="tampilan-app.html" class="week-nav-btn">← Screenshot Aplikasi</a>
+        <a href="index.html" class="week-nav-btn">Menu Week 07 →</a>
+      </nav>
 
       <footer class="page-footer">
         <p>Faiz Muhammad Ilham Hariry • 1247050032 • IF A 24 • Pengembangan Aplikasi Web</p>
       </footer>
     </main>
+
+    <script>
+      (function () {
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const applyTheme = (isLight) => {
+          document.body.classList.toggle('light-mode', isLight);
+          if (themeBtn) themeBtn.textContent = isLight ? '🌙 Dark' : '☀️ Light';
+        };
+        applyTheme(localStorage.getItem('theme') === 'light');
+        if (themeBtn) {
+          themeBtn.addEventListener('click', () => {
+            const nextLight = !document.body.classList.contains('light-mode');
+            localStorage.setItem('theme', nextLight ? 'light' : 'dark');
+            applyTheme(nextLight);
+          });
+        }
+
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-tab');
+            tabBtns.forEach((b) => b.classList.remove('active'));
+            tabPanels.forEach((p) => p.classList.remove('active'));
+            btn.classList.add('active');
+            const targetPanel = document.getElementById(targetId);
+            if (targetPanel) targetPanel.classList.add('active');
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -195,6 +195,346 @@ pre {
   margin-top: 40px;
 }
 
+/* ==========================================================================
+   Komponen Tambahan Portal (Checklist, Deep Links, Lightbox, Tabs, Theme)
+   ========================================================================== */
+body.light-mode {
+  background-color: #f5f9fc;
+  color: #182230;
+}
+
+body.light-mode .menu-card,
+body.light-mode .panel-box,
+body.light-mode .gallery-card,
+body.light-mode .tab-panel {
+  background-color: #ffffff;
+  border-color: #e2ecf5;
+  color: #182230;
+}
+
+body.light-mode .menu-card p,
+body.light-mode .panel-header p,
+body.light-mode .checklist-grid span,
+body.light-mode .gallery-card figcaption span,
+body.light-mode .tech-list li {
+  color: #475569;
+}
+
+.nav-right-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-mini-btn {
+  background: rgba(29, 140, 248, 0.14);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+body.light-mode .theme-mini-btn {
+  background: #e6f3ff;
+  color: #1d8cf8;
+  border-color: #bae6fd;
+}
+
+/* Panel Box (Quick Links & Checklist) */
+.panel-box {
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: 14px;
+  background: rgba(19, 31, 54, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.panel-header h2 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.panel-header p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+.quick-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(29, 140, 248, 0.14);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.chip-link:hover {
+  background: #1d8cf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Checklist Grid */
+.checklist-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.checklist-grid li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+body.light-mode .checklist-grid li {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  font-size: 0.78rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+body.light-mode .check-icon {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.checklist-grid li div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.checklist-grid li strong {
+  font-size: 0.92rem;
+}
+
+.checklist-grid li span {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+/* Galeri Screenshot & Lightbox */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.gallery-card {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(19, 31, 54, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  cursor: zoom-in;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-3px);
+  border-color: #38bdf8;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-card figcaption {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gallery-card figcaption span {
+  font-size: 0.84rem;
+  color: #94a3b8;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lb-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.lb-content img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lb-content p {
+  margin-top: 12px;
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.lb-close,
+.lb-nav {
+  position: fixed;
+  background: rgba(30, 41, 59, 0.85);
+  color: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.lb-close { top: 20px; right: 20px; }
+.lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+/* Tabs Bar & Panel */
+.tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(19, 31, 54, 0.7);
+  color: #cbd5e1;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+body.light-mode .tab-btn {
+  background: #ffffff;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+.tab-btn.active {
+  background: #1d8cf8;
+  border-color: #1d8cf8;
+  color: #ffffff;
+}
+
+.tab-panel {
+  display: none;
+  padding: 22px;
+  border-radius: 14px;
+  background: rgba(19, 31, 54, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-panel h2 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.tech-list {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.code-block {
+  background: #0b1220;
+  color: #38bdf8;
+  padding: 16px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+/* Navigasi Antar Minggu */
+.week-nav {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.week-nav-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: rgba(148, 163, 184, 0.12);
+  color: inherit;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.week-nav-btn:hover {
+  border-color: #38bdf8;
+}
+
 /* Responsif Smartphone */
 @media (max-width: 600px) {
   body {

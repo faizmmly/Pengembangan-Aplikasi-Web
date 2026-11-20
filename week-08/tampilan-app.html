@@ -3,51 +3,115 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bukti Screenshot Aplikasi - Week 08</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Screenshot Aplikasi - TokoKita (Week 08)</title>
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <main class="container">
       <nav class="breadcrumb">
-        <a href="index.html">← Kembali ke Menu Week 08</a>
-        <span class="status-badge">Bukti UI</span>
+        <a href="index.html">← Kembali ke Week 08</a>
+        <span class="status-badge">Galeri Dokumentasi</span>
       </nav>
 
       <header class="page-header">
-        <h1>Screenshot Tampilan Aplikasi TokoKita</h1>
-        <p>Dokumentasi tangkapan layar antarmuka pengguna (UI/UX), halaman detail produk, dan fitur interaktif React.</p>
+        <h1>Screenshot Aplikasi TokoKita</h1>
+        <p>Klik pada gambar mana saja untuk memperbesar tampilan antarmuka dalam mode layar penuh (Lightbox).</p>
       </header>
 
-      <section class="content-card">
-        <h2>1. Tampilan Halaman Utama &amp; Katalog Produk</h2>
-        <p>Menunjukkan halaman beranda dan katalog produk yang mengambil data dari DummyJSON API, lengkap dengan fitur pencarian, filter kategori, pengurutan (sorting), dan pagination.</p>
-        <div class="img-container">
-          <img src="img/screenshot-beranda.png" alt="Halaman Utama TokoKita React" />
-        </div>
-      </section>
+      <div class="gallery-grid">
+        <figure class="gallery-card" data-index="0">
+          <img src="img/screenshot-beranda.png" alt="Halaman Beranda dan Katalog Produk TokoKita" loading="lazy" />
+          <figcaption>
+            <strong>1. Halaman Beranda &amp; Katalog</strong>
+            <span>Menampilkan hero banner, kategori populer, dan daftar produk unggulan dari API.</span>
+          </figcaption>
+        </figure>
 
-      <section class="content-card">
-        <h2>2. Tampilan Halaman Detail Produk &amp; Ulasan</h2>
-        <p>Menunjukkan dynamic route (<code>/produk/:id</code>) yang memuat informasi lengkap produk, galeri gambar, stok, produk terkait, serta formulir tambah ulasan dengan validasi input.</p>
-        <div class="img-container">
-          <img src="img/screenshot-product.png" alt="Produk TokoKita React" />
-          <img src="img/detail-product.png" alt="Detail Produk TokoKita React" />
-        </div>
-      </section>
+        <figure class="gallery-card" data-index="1">
+          <img src="img/screenshot-detail.png" alt="Halaman Detail Produk dan Form Ulasan TokoKita" loading="lazy" />
+          <figcaption>
+            <strong>2. Dynamic Route Detail Produk &amp; Ulasan</strong>
+            <span>Rute dinamis <code>/produk/:id</code> dilengkapi galeri foto dan form ulasan bervalidasi.</span>
+          </figcaption>
+        </figure>
 
-      <section class="content-card">
-        <h2>3. Tampilan Fitur Interaktif (Keranjang &amp; Checkout)</h2>
-        <p>Menunjukkan pengelolaan Global State menggunakan Context API untuk keranjang belanja, ringkasan total harga otomatis, modal formulir checkout responsif, dan notifikasi toast.</p>
-        <div class="img-container">
-          <img src="img/screenshot-keranjang.png" alt="Keranjang TokoKita React" />
-          <img src="img/pembayaran.png" alt="Pembayaran TokoKita React" />
-          <img src="img/screenshot-checkout.png" alt="Checkout TokoKita React" />
-        </div>
-      </section>
+        <figure class="gallery-card" data-index="2">
+          <img src="img/screenshot-checkout.png" alt="Halaman Keranjang Belanja dan Checkout TokoKita" loading="lazy" />
+          <figcaption>
+            <strong>3. Keranjang &amp; Simulasi Checkout</strong>
+            <span>State global berbasis Context API yang tersinkronisasi dengan localStorage.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <nav class="week-nav">
+        <a href="index.html" class="week-nav-btn">← Menu Week 08</a>
+        <a href="penjelasan.html" class="week-nav-btn">Penjelasan Arsitektur →</a>
+      </nav>
 
       <footer class="page-footer">
         <p>Faiz Muhammad Ilham Hariry • 1247050032 • IF A 24 • Pengembangan Aplikasi Web</p>
       </footer>
     </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button type="button" class="lb-close" id="lbClose" aria-label="Tutup">✕</button>
+      <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Sebelumnya">‹</button>
+      <div class="lb-content">
+        <img id="lbImg" src="" alt="" />
+        <p id="lbCaption"></p>
+      </div>
+      <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Berikutnya">›</button>
+    </div>
+
+    <script>
+      (function () {
+        if (localStorage.getItem('theme') === 'light') {
+          document.body.classList.add('light-mode');
+        }
+
+        const cards = Array.from(document.querySelectorAll('.gallery-card'));
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbCaption = document.getElementById('lbCaption');
+        let currentIdx = 0;
+
+        function openLightbox(index) {
+          currentIdx = (index + cards.length) % cards.length;
+          const img = cards[currentIdx].querySelector('img');
+          const title = cards[currentIdx].querySelector('strong').textContent;
+          lbImg.src = img.src;
+          lbImg.alt = img.alt;
+          lbCaption.textContent = title;
+          lightbox.classList.add('open');
+          lightbox.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('open');
+          lightbox.setAttribute('aria-hidden', 'true');
+        }
+
+        cards.forEach((card, idx) => {
+          card.addEventListener('click', () => openLightbox(idx));
+        });
+
+        document.getElementById('lbClose').addEventListener('click', closeLightbox);
+        document.getElementById('lbPrev').addEventListener('click', () => openLightbox(currentIdx - 1));
+        document.getElementById('lbNext').addEventListener('click', () => openLightbox(currentIdx + 1));
+
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox.classList.contains('open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') openLightbox(currentIdx - 1);
+          if (e.key === 'ArrowRight') openLightbox(currentIdx + 1);
+        });
+      })();
+    </script>
   </body>
 </html>
